@@ -25,3 +25,7 @@ header li {
 header li:hover {
   scale: 1.05;
 }
+header a {
+  text-decoration: none;
+  color: black
+}
