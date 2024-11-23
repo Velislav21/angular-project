@@ -1,0 +1,11 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: bisque;
+  height: 8vh;
+  color: white;
+  text-shadow: 1px 1px black;
+  text-align: center;
+  border: 1px solid black;
+}
