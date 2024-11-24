@@ -9,6 +9,7 @@ userController.post('/register', async (req, res) => {
 
     try {
         const response = await userService.register(username, email, password, confirmPassword);
+        res.cookie('auth', response.accessToken, { httpOnly: true, sameSite: true, secure: true })
         res.json(response)
 
     } catch (err) {
@@ -21,9 +22,10 @@ userController.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const result = await userService.login(username, password)
-        res.json(result)
- 
+        const response = await userService.login(username, password);
+        res.cookie('auth', response.accessToken, { httpOnly: true, sameSite: true, secure: true })
+        res.json(response)
+
     } catch (err) {
         const error = getError(err);
         res.status(400).json({ message: error })

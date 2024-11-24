@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 
-export const authMiddleware2 = (req, res, next) => {
+export const authMiddleware = (req, res, next) => {
     const token = req.header('X-Authorization');
 
     if (!token) {
@@ -15,6 +15,7 @@ export const authMiddleware2 = (req, res, next) => {
 
         next();
     } catch (err) {
+        //! TODO: something else
         res.status(401).end();
     }
 } 

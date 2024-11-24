@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 // import cookieParser from 'cookie-parser';
 import cors from 'cors'
 import 'dotenv/config'
-import { authMiddleware2 } from './middlewares/authMiddleware.js';
+import { authMiddleware } from './middlewares/authMiddleware.js';
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.use(cors({
 app.use(express.json())
 // app.use(express.urlencoded({ extended: false }))
 // app.use(cookieParser());
-app.use(authMiddleware2)
+app.use(authMiddleware)
 app.use(routes)
 
 app.listen(3000, () => console.log('Server is listening on http://localhost:3000'))
