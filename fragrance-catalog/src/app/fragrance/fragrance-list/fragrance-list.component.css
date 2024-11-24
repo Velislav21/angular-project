@@ -20,53 +20,57 @@ img {
 }
 
 .fragrance-description {
-    font-family: 'Open Sans', sans-serif;
-    color: black;
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  font-size: 20px;
+  line-height: 1.6;
+}
 
 li {
   text-decoration: none;
 }
 .button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
 }
 
 .btn-like {
-    background: rgb(200, 145, 78);
-    color: #2c1810;
+  background: rgb(200, 145, 78);
+  color: #2c1810;
 }
 
 .btn-edit {
-    background: rgb(200, 145, 78);
-    color: white;
+  background: rgb(200, 145, 78);
+  color: white;
 }
 
 .btn-delete {
-    background: #b90000;
-    color: white;
+  background: #b90000;
+  color: white;
 }
 
 .btn-details {
-    background: rgb(200, 145, 78);
-    color: white;
+  background: rgb(200, 145, 78);
+  color: white;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+ul {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
 }

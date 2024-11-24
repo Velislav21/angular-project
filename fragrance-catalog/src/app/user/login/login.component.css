@@ -6,6 +6,10 @@
 }
 
 .login-container {
+  top: 20%;
+  left: 40%;
+  position: absolute;
+  display:block;
   background: bisque;
   padding: 40px;
   border-radius: 10px;

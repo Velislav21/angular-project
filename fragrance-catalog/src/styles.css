@@ -1,7 +1,10 @@
-You can add global styles to this file, and also import other style files
 * {
   padding: 0;
   margin: 0;
+}
+
+main {
+  min-height: 100vh;
 }
 
 button:hover {
@@ -9,7 +12,7 @@ button:hover {
 }
 
 body {
-  max-width:none;
+  max-width: none;
   margin: auto;
   position: relative;
   min-height: 100vh;
@@ -18,19 +21,18 @@ body {
   align-items: center;
 }
 
-
-
 html {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
   background-color: #f5dca7;
-} 
+}
 
 /*
 *Removes all default whitespace

@@ -3,7 +3,9 @@
   padding: 0;
   font-family: "Open Sans", sans-serif;
 }
-
+main {
+  min-height: 100vh
+}
 .register-container {
   background: bisque;
   padding: 40px;
