@@ -2,7 +2,7 @@
 button:hover {
   cursor: pointer;
 }
-body {
+/* body {
     position: relative;
     margin: auto;
     font-optical-sizing: auto;
@@ -10,7 +10,30 @@ body {
     background-color: #f5dca7;
     max-width: none;
 }
+    
 
 html {
   font-family: sans-serif;
+} */
+
+body {
+  max-width:none;
+  margin: auto;
+  position: relative;
+  min-height: 100vh;
+  font-optical-sizing: auto;
+  background-color: #e4e3e3;
+  align-items: center;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5dca7;
 }

@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
 import { FragranceDetailsComponent } from './fragrance/fragrance-details/fragrance-details.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,4 +16,7 @@ export const routes: Routes = [
       { path: ':fragranceId', component: FragranceDetailsComponent },
     ],
   },
+  //User routing
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
