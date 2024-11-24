@@ -2,9 +2,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #234465;
   height: 8vh;
-  color: white;
   text-align: center;
 }
 .footer {
