@@ -1,7 +1,17 @@
 <ul>
   @for (fragrance of fragrances; track $index) {
-  <li>
-    {{ fragrance }}
-  </li>
+  <div class="fragrance-container">
+    <li>
+      {{ fragrance.name }}
+    </li>
+    <li>
+      <img [src]="fragrance.image" />
+      {{ fragrance.description }}
+    </li>
+
+    @for (scent of fragrance.scents; track $index) {
+    <li>{{ scent }}</li>
+    }
+  </div>
   }
 </ul>

@@ -21,7 +21,7 @@ fragranceController.get('/details/:fragranceId', async (req, res) => {
 
 fragranceController.post('/create', async (req, res) => {
     
-    const ownerId = req.user._id;
+    // const ownerId = req.user._id;
 
     const fragranceData = req.body;
     //! ownerId !!!

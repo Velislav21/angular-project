@@ -10,3 +10,7 @@ body {
     background-color: #f5dca7;
     max-width: none;
 }
+
+html {
+  font-family: sans-serif;
+}
