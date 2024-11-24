@@ -8,10 +8,6 @@ const fragranceService = {
         if (filter.name) {
             query.find({ name: { $regex: filter.name, $options: 'i' } })
         }
-
-        // if (filter.solarSystem) {
-        //     query.find({ solarSystem: filter.solarSystem })
-        // }
         return query
     },
     getOne(fragranceId) {

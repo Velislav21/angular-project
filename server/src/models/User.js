@@ -23,7 +23,7 @@ const userSchema = new Schema({
 
 userSchema.pre('save', async function () {
 
-    const hash = await bcrypt.hash(this.password, SALT_ROUNDS);
+    const hash = bcrypt.hash(this.password, SALT_ROUNDS);
 
     this.password = hash;
 })
