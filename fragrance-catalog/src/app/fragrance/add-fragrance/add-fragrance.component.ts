@@ -5,8 +5,9 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './add-fragrance.component.html',
-  styleUrl: './add-fragrance.component.css'
+  styleUrl: './add-fragrance.component.css',
 })
 export class AddFragranceComponent {
 
 }
+ 

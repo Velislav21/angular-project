@@ -1,4 +1,4 @@
-img {
+/* img {
   max-width: 150px;
   max-height: 250px;
 }
@@ -69,8 +69,11 @@ li {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-ul {
+div.container {
   display: flex;
   gap: 30px;
   justify-content: center;
 }
+div.notes {
+  
+} */

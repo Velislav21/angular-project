@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Fragrance } from '../../types/fragrance';
 import { ApiService } from '../../../api.service';
+import { FragranceDetailsComponent } from '../fragrance-details/fragrance-details.component';
 
 @Component({
   selector: 'app-fragrance-list',
   standalone: true,
-  imports: [],
+  imports: [FragranceDetailsComponent],
   templateUrl: './fragrance-list.component.html',
   styleUrl: './fragrance-list.component.css',
 })
