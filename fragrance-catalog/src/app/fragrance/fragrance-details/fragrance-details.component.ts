@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../api.service';
 import { Fragrance } from '../../types/fragrance';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-fragrance-details',
@@ -9,14 +10,18 @@ import { Fragrance } from '../../types/fragrance';
   templateUrl: './fragrance-details.component.html',
   styleUrl: './fragrance-details.component.css',
 })
-export class FragranceDetailsComponent {
-  fragrances: Fragrance[] = [];
+export class FragranceDetailsComponent implements OnInit {
 
-  constructor(private apiService: ApiService) {}
+  fragrance = {} as Fragrance;
 
-  ngOnInit() {
-    this.apiService.getFragrances().subscribe((fragrancesFromDb) => {
-      this.fragrances = fragrancesFromDb;
+  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const fragranceId = this.route.snapshot.params['fragranceId'];
+    
+    this.apiService.getSingleFragrance(fragranceId).subscribe((fragranceFromDb) => {
+      console.log(fragranceFromDb)
+      this.fragrance = fragranceFromDb;
     });
   }
 }

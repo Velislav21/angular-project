@@ -5,6 +5,7 @@ footer {
   height: 8vh;
   text-align: center;
 }
+
 .footer {
   background: bisque;
   color: black;
@@ -25,5 +26,5 @@ footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  padding: 0 20px;
+  padding: 10 20px;
 }

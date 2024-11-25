@@ -8,7 +8,7 @@ fragranceController.get('/', async (req, res) => {
 
     const fragrances = await fragranceService.getAll().lean();
 
-    return res.status(200).json(fragrances);
+    res.status(200).json(fragrances);
 })
 
 fragranceController.get('/details/:fragranceId', async (req, res) => {
@@ -16,7 +16,7 @@ fragranceController.get('/details/:fragranceId', async (req, res) => {
     const id = req.params.fragranceId
     const fragrance = await fragranceService.getOne(id).lean();
 
-    return res.status(200).json(fragrance);
+    res.status(200).json(fragrance);
 })
 
 fragranceController.post('/create', async (req, res) => {

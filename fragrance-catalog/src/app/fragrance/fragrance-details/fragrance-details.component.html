@@ -1,7 +1,4 @@
-
 <div class="container">
-  @for (fragrance of fragrances; track $index) {
-
   <div class="fragrance-container">
     <h2 class="fragrance-name">{{ fragrance.name }}</h2>
     <img [src]="fragrance.image" class="fragrance-image" />
@@ -17,8 +14,6 @@
       <button class="btn btn-like">❤ Like</button>
       <button class="btn btn-edit">✏️ Edit</button>
       <button class="btn btn-delete">🗑️ Delete</button>
-      <button class="btn btn-details">ℹ️ Details</button>
     </div>
   </div>
-  }
 </div>

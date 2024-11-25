@@ -15,4 +15,8 @@ export class ApiService {
   getFragrances(){
     return this.http.get<Fragrance[]>(`${this.apiUrl}/fragrances`)
   }
+
+  getSingleFragrance(fragranceId: string) {
+    return this.http.get<Fragrance>(`${this.apiUrl}/fragrances/details/${fragranceId}`) // localhost:3000/details/al;kfjal;fkaslk
+  }
 }

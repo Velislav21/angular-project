@@ -1,6 +1,7 @@
-/* img {
-  max-width: 150px;
-  max-height: 250px;
+div.container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
 }
 .fragrance-container {
   max-height: 170;
@@ -11,6 +12,10 @@
   margin: 20px;
   background-color: rgb(222, 181, 131);
 }
+img {
+  max-width: 150px;
+  max-height: 250px;
+}
 
 .fragrance-name {
   font-family: "Playfair Display", serif;
@@ -19,23 +24,14 @@
   margin-bottom: 10px;
 }
 
-.fragrance-description {
-  font-family: "Open Sans", sans-serif;
-  color: black;
-  font-size: 20px;
-  line-height: 1.6;
-}
-
-li {
-  text-decoration: none;
-}
-.button-group {
+.details-a {
   display: flex;
   gap: 10px;
   margin-top: 15px;
 }
 
-.btn {
+a {
+  text-decoration: none;
   padding: 8px 16px;
   border: none;
   border-radius: 25px;
@@ -43,37 +39,6 @@ li {
   transition: all 0.3s ease;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
-}
-
-.btn-like {
-  background: rgb(200, 145, 78);
-  color: #2c1810;
-}
-
-.btn-edit {
   background: rgb(200, 145, 78);
   color: white;
 }
-
-.btn-delete {
-  background: #b90000;
-  color: white;
-}
-
-.btn-details {
-  background: rgb(200, 145, 78);
-  color: white;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-div.container {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-}
-div.notes {
-  
-} */

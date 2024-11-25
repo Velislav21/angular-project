@@ -4,7 +4,7 @@
 }
 
 main {
-  min-height: 100vh;
+  min-height: 83vh;
 }
 
 button:hover {
@@ -12,7 +12,6 @@ button:hover {
 }
 
 body {
-  max-width: none;
   margin: auto;
   position: relative;
   min-height: 100vh;

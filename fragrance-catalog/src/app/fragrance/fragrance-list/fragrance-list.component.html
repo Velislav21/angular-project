@@ -1,25 +1,13 @@
-<!-- <div class="container">
+<div class="container">
   @for (fragrance of fragrances; track $index) {
 
   <div class="fragrance-container">
     <h2 class="fragrance-name">{{ fragrance.name }}</h2>
     <img [src]="fragrance.image" class="fragrance-image" />
-    <p class="fragrance-description">
-      {{ fragrance.description }}
-    </p>
-    <div class="notes">
-      @for (scent of fragrance.scents; track $index) {
-      <p>{{ scent }}</p>
-      }
-    </div>
-    <div class="button-group">
-      <button class="btn btn-like">❤ Like</button>
-      <button class="btn btn-edit">✏️ Edit</button>
-      <button class="btn btn-delete">🗑️ Delete</button>
-      <button class="btn btn-details">ℹ️ Details</button>
+
+    <div class="details-a">
+      <a [routerLink]="fragrance._id">Details</a>
     </div>
   </div>
   }
-</div> -->
-
-  <app-fragrance-details></app-fragrance-details>
+</div>
