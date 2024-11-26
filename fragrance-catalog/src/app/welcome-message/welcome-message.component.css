@@ -1,6 +1,8 @@
-p {
-    padding: 1em;
-    border-bottom: 1px solid #999;
-    font-style: initial;
-    color: #333; /
+.container {
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 1300px;
+  margin: 300px;
+  background-color: rgb(222, 181, 131);
 }

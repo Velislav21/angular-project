@@ -4,7 +4,6 @@ div.container {
   justify-content: center;
 }
 .fragrance-container {
-  max-height: 170;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -13,6 +12,7 @@ div.container {
   background-color: rgb(222, 181, 131);
 }
 img {
+  padding-left: 60px;
   max-width: 150px;
   max-height: 250px;
 }

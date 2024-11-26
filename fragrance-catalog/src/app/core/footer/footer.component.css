@@ -27,4 +27,5 @@ footer {
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   padding: 10 20px;
+  padding-left: 900px;
 }
