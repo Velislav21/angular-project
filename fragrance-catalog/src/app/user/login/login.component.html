@@ -1,21 +1,48 @@
 <div class="login-container">
-    <div class="login-header">
-        <h1>Welcome Back</h1>
-        <p>Please login to your account</p>
+  <div class="login-header">
+    <h1>Welcome Back</h1>
+    <p>Please login to your account</p>
+  </div>
+  <form #loginForm="ngForm" (ngSubmit)="formHandler()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        #emailInput="ngModel"
+        email
+        ngModel
+        required
+      />
     </div>
-    <form>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button class="button">Login</button>
-    </form>
 
-    <div class="signup-link">
-        Don't have an account? <a routerLink="/register">Sign up</a>
+    @if (emailInput.touched) {
+    <div>
+      @if (emailInput.errors?.['required']) {
+      <div>Email is required.</div>
+      }
+      @if (emailInput.errors?.['email']) {
+      <div>Email is not Valid.</div>
+      }
     </div>
+    }
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        #passwordInput="ngModel"
+        ngModel
+        required
+      />
+    </div>
+    <button class="button">Login</button>
+  </form>
+
+  <div class="signup-link">
+    Don't have an account? <a routerLink="/register">Sign up</a>
+  </div>
 </div>
