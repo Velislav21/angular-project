@@ -10,11 +10,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-
-  @ViewChild('loginForm')  form: NgForm | undefined;
+  @ViewChild('loginForm') form: NgForm | undefined;
 
   formHandler() {
-    console.log(this.form)
-    console.log('submited')
+    console.log(this.form);
+    console.log('submited');
   }
 }

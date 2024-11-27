@@ -3,9 +3,9 @@ import bcrypt from 'bcrypt';
 import { SALT_ROUNDS } from '../constants.js';
 
 const userSchema = new Schema({
-    username: {
+    name: {
         type: String,
-        required: [true, 'Username is required'],
+        required: [true, 'Name is required'],
         // minLength: 2,
         // maxLenght: 20
     },
@@ -23,7 +23,7 @@ const userSchema = new Schema({
 
 userSchema.pre('save', async function () {
 
-    const hash = bcrypt.hash(this.password, SALT_ROUNDS);
+    const hash = await bcrypt.hash(this.password, SALT_ROUNDS);
 
     this.password = hash;
 })

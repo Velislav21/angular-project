@@ -3,52 +3,53 @@ import jwt from '../jwt.js';
 import User from '../models/User.js'
 
 const userService = {
-    async register(username, email, password, confirmPassword) {
+    async register(name, email, password, rePassword) {
 
-        const user = await User.findOne({ $or: [{ email }, { username }] });
+        const user = await User.findOne({ $or: [{ email }, { name }] });
 
-        if (password !== confirmPassword) {
+        if (password !== rePassword) {
             throw new Error('Passwords must match!');
         }
         if (user) {
             throw new Error('User is already registered');
         }
-        const newUser = await User.create({ username, email, password });
+        const newUser = await User.create({ name, email, password });
 
         return generateResponse(newUser)
     },
-    async login(username, password) {
+    async login(email, password) {
 
-        const user = await User.findOne({ username });
+        const user = await User.findOne({ email });
 
         if (!user) {
             throw new Error('Invalid email or password!');
         }
         const isValid = await bcrypt.compare(password, user.password);
 
-        if (!isValid){
+        if (!isValid) {
             throw new Error('Invalid email or password!')
         }
         return generateResponse(user);
     },
 }
 
-function generateResponse(user) { 
+async function generateResponse(user) { 
     const payload = {
         _id: user._id,
         email: user.email,
-        username: user.username,
+        name: user.name,
     }
 
     const header = { expiresIn: '2h' };
 
-    const token = jwt.sign(payload, 'TEST', header)
+    const token = await jwt.sign(payload, 'TEST', header)
     return {
         _id: user._id,
-        username: user.username,
+        name: user.name,
         email: user.email,
         accessToken: token
     }
 }
+
 
 export default userService;

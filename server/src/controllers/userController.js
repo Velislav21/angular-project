@@ -5,13 +5,13 @@ import getError from "../utils/error.js";
 const userController = Router();
 
 userController.post('/register', async (req, res) => {
-    const { username, email, password, confirmPassword } = req.body;
+    const { name, email, password, rePassword } = req.body;
 
     try {
-        const response = await userService.register(username, email, password, confirmPassword);
-        console.log(response)
-        res.cookie('auth', response.accessToken, { httpOnly: true, sameSite: 'none', secure: true })
+        const response = await userService.register(name, email, password, rePassword);
+        res.cookie(AUTH_COOKIE_NAME, response.accessToken, { httpOnly: true, sameSite: 'none', secure: true })
         res.json(response)
+        console.log(response)
 
     } catch (err) {
         const error = getError(err);
@@ -20,12 +20,12 @@ userController.post('/register', async (req, res) => {
 })
 userController.post('/login', async (req, res) => {
 
-    const { username, password } = req.body;
+    const { name, password } = req.body;
 
     try {
-        const response = await userService.login(username, password);
+        const response = await userService.login(name, password);
         console.log(response)
-        res.cookie('auth', response.accessToken, { httpOnly: true, sameSite: 'none', secure: true })
+        res.cookie(AUTH_COOKIE_NAME, response.accessToken, { httpOnly: true, sameSite: 'none', secure: true })
         res.json(response)
 
     } catch (err) {
