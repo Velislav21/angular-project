@@ -18,7 +18,7 @@ export class RegisterComponent {
   register() {
     const payload = this.registerForm?.form.value;
     
-    this.userService.createAccount(payload).subscribe((result) => {
+    this.userService.register(payload).subscribe((result) => {
       console.log(result)
     })
   }

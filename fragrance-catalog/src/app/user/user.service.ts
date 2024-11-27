@@ -11,7 +11,7 @@ export class UserService {
   
   constructor(private http: HttpClient) {}
 
-  createAccount(payload: User){
+  register(payload: User){
     return this.http.post(`${this.url}/users/register`, payload)
   }
 }
