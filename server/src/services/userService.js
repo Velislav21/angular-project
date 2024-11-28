@@ -33,6 +33,8 @@ const userService = {
     },
 }
 
+
+
 async function generateResponse(user) { 
     const payload = {
         _id: user._id,
@@ -42,7 +44,7 @@ async function generateResponse(user) {
 
     const header = { expiresIn: '2h' };
 
-    const token = await jwt.sign(payload, 'SECRET', header)
+    const token = await jwt.sign(payload, process.env.JWT_SECRET, header)
     return {
         _id: user._id,
         name: user.name,

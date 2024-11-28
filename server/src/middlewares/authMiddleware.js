@@ -2,26 +2,25 @@ import jwt from "jsonwebtoken"
 import { AUTH_COOKIE_NAME } from "../constants.js";
 
 export const authMiddleware = (req, res, next) => {
-    // const token = req.cookies[AUTH_COOKIE_NAME];
-    const token = req.header('X-Authorization')
-    console.log(token)
+    const token = req.cookies[AUTH_COOKIE_NAME];
+    // const token = req.header('X-Authorization')
     // console.log(req.cookies[AUTH_COOKIE_NAME])
     if (!token) {
         return next();
     }
 
     try {
-        const decodedToken = jwt.verify(token, 'SECRET');
-
-        // console.log(decodedToken)
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
         req.user = decodedToken;
         req.isAuthenticated = true;
 
+        console.log('worked ?')
         next();
     } catch (err) {
-        console.log('something is wrong')
+        console.log(err.message)
         //! TODO: something else
         res.end();
+        // return next()
     }
 } 
