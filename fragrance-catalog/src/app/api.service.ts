@@ -1,22 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environments';
 import { Fragrance } from './types/fragrance';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
+  constructor(private http: HttpClient) {}
 
-  apiUrl = environment.apiUrl
-
-  constructor(private http: HttpClient) { }
-
-  getFragrances(){
-    return this.http.get<Fragrance[]>(`${this.apiUrl}/fragrances`)
+  getFragrances() {
+    return this.http.get<Fragrance[]>(`/api/fragrances`);
   }
 
   getSingleFragrance(fragranceId: string) {
-    return this.http.get<Fragrance>(`${this.apiUrl}/fragrances/details/${fragranceId}`) 
+    return this.http.get<Fragrance>(`/api/fragrances/details/${fragranceId}`);
   }
 }

@@ -20,7 +20,6 @@ export class FragranceDetailsComponent implements OnInit {
     const fragranceId = this.route.snapshot.params['fragranceId'];
     
     this.apiService.getSingleFragrance(fragranceId).subscribe((fragranceFromDb) => {
-      console.log(fragranceFromDb)
       this.fragrance = fragranceFromDb;
     });
   }
