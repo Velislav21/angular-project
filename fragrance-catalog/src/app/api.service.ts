@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from './environments/environments';
-import { Fragrance } from './app/types/fragrance';
+import { environment } from '../environments/environments';
+import { Fragrance } from './types/fragrance';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,6 @@ export class ApiService {
   }
 
   getSingleFragrance(fragranceId: string) {
-    return this.http.get<Fragrance>(`${this.apiUrl}/fragrances/details/${fragranceId}`) // localhost:3000/details/al;kfjal;fkaslk
+    return this.http.get<Fragrance>(`${this.apiUrl}/fragrances/details/${fragranceId}`) 
   }
 }

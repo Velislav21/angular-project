@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Fragrance } from '../../types/fragrance';
-import { ApiService } from '../../../api.service';
+import { ApiService } from '../../api.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
