@@ -42,7 +42,7 @@ async function generateResponse(user) {
 
     const header = { expiresIn: '2h' };
 
-    const token = await jwt.sign(payload, 'TEST', header)
+    const token = await jwt.sign(payload, 'SECRET', header)
     return {
         _id: user._id,
         name: user.name,

@@ -3,7 +3,7 @@
     <h1>Welcome Back</h1>
     <p>Please login to your account</p>
   </div>
-  <form #loginForm="ngForm" (ngSubmit)="formHandler()">
+  <form #loginForm="ngForm" (ngSubmit)="login(emailInput.value, passwordInput.value)">
     <div class="form-group">
       <label for="email">Email</label>
       <input
@@ -39,6 +39,15 @@
         required
       />
     </div>
+
+    @if (passwordInput.touched) {
+      <div>
+        @if (passwordInput.errors?.['required']) {
+        <div>Password is required.</div>
+        }
+      </div>
+      }
+
     <button class="button">Login</button>
   </form>
 

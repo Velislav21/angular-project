@@ -33,6 +33,12 @@ userController.post('/login', async (req, res) => {
 
 })
 
+userController.get('/profile', (req, res) => {
+
+    
+
+})
+
 userController.get('/logout', (req, res) => {
     res.clearCookie(AUTH_COOKIE_NAME);
 })

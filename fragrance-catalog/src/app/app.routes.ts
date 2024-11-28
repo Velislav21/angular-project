@@ -5,6 +5,7 @@ import { FragranceDetailsComponent } from './fragrance/fragrance-details/fragran
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { AddFragranceComponent } from './fragrance/add-fragrance/add-fragrance.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,4 +22,5 @@ export const routes: Routes = [
   //User routing
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
 ];

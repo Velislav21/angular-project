@@ -1,6 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../user.service';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../types/user';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +13,14 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  @ViewChild('loginForm') form: NgForm | undefined;
+  constructor(private userService: UserService, private router: Router) {}
 
-  formHandler() {
-    console.log(this.form);
-    console.log('submited');
+  login(email: string, password: string) {
+
+    this.userService.login(email, password).subscribe((res) => {
+      console.log(res);
+
+      this.router.navigate(['/home']);
+    });
   }
 }

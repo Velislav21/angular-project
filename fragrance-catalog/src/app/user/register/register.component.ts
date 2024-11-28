@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -13,13 +13,15 @@ import { UserService } from '../user.service';
 export class RegisterComponent {
   @ViewChild('registerForm') registerForm: NgForm | undefined;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   register() {
-    const payload = this.registerForm?.form.value;
-    
-    this.userService.register(payload).subscribe((result) => {
-      console.log(result)
-    })
+    const { email, name, password, rePassword } = this.registerForm?.form.value;
+
+    this.userService
+      .register(email, name, password, rePassword)
+      .subscribe(() => {
+        this.router.navigate(['/home']);
+      });
   }
 }
