@@ -35,7 +35,11 @@ userController.post('/login', async (req, res) => {
 
 userController.get('/profile', (req, res) => {
 
-    
+    if (req.user) {
+        res.json(req.user)
+    } else {
+        res.json({ "Data": "no user, invalid token" })
+    }
 
 })
 

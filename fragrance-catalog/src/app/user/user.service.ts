@@ -35,6 +35,8 @@ export class UserService {
   }
 
   getProfile() {
-    return this.http.get('/api/users/profile')
+    return this.http
+      .get<User>('/api/users/profile')
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 }

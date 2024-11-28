@@ -15,12 +15,10 @@ export const authMiddleware = (req, res, next) => {
         req.user = decodedToken;
         req.isAuthenticated = true;
 
-        console.log('worked ?')
         next();
     } catch (err) {
         console.log(err.message)
         //! TODO: something else
         res.end();
-        // return next()
     }
 } 
