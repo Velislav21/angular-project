@@ -46,7 +46,7 @@ export class UserService {
 
   logout() {
     return this.http
-      .post('/api/users/logout', {})
+      .get('/api/users/logout')
       .pipe(tap((user) => this.user$$.next(null)));
   }
 }

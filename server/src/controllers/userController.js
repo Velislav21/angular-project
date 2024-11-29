@@ -43,8 +43,7 @@ userController.get('/profile', (req, res) => {
 
 })
 
-userController.post('/logout', (req, res) => {
-    const token = req.cookies[AUTH_COOKIE_NAME];
+userController.get('/logout', (req, res) => {
     try {
         res.clearCookie(AUTH_COOKIE_NAME).send({ message: 'Cookie cleared' })
 
