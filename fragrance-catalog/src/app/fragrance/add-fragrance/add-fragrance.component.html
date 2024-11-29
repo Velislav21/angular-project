@@ -2,28 +2,51 @@
   <div class="create-header">
     <h1>Create Fragrance</h1>
   </div>
-  <form>
+  <form #createForm="ngForm" (ngSubmit)="create()">
     <div class="form-group">
-      <label for="fragrance-name">Fragrance Name</label>
-      <input type="text" id="name" name="name" required />
+      <label for="name">Fragrance Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        #nameInput="ngModel"
+        ngModel
+        required
+      />
     </div>
     <div class="form-group">
-      <label for="image">Image Url</label>
-      <input type="email" id="image" name="image" required />
+      <label for="imageUrl">Image Url</label>
+      <input
+        type="text"
+        id="imageUrl"
+        name="imageUrl"
+        #imageInput="ngModel"
+        ngModel
+        required
+      />
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <input type="text" id="description" name="description" required />
-    </div>
-    <!-- <div class="form-group">
-      <label for="confirm-password">Confirm Password</label>
       <input
-        type="password"
-        id="confirm-password"
-        name="confirm-password"
+        type="text"
+        id="description"
+        name="description"
+        #descriptionInput="ngModel"
+        ngModel
         required
       />
-    </div> -->
-    <button class="fragrance-button">Create Fragrance</button>
+    </div>
+    <div class="form-group">
+      <label for="scents">Scents</label>
+      <input
+        type="text"
+        id="scents"
+        name="scents"
+        #scentsInput="ngModel"
+        ngModel
+        required
+      />
+    </div>
+    <button class="fragrance-button" >Create Fragrance</button>
   </form>
 </div>

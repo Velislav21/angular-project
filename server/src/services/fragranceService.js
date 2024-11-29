@@ -13,12 +13,10 @@ const fragranceService = {
     getOne(fragranceId) {
         return Fragrance.findById(fragranceId);
     },
-    create(fragranceData) {
-        return Fragrance.create({ ...fragranceData });
+    create(fragranceData, ownerId) {
+        return Fragrance.create({ ...fragranceData, owner: ownerId });
     },
-    // create(fragranceData, userId) {
-    //     return Fragrance.create({ ...fragranceData, owner: userId });
-    // }, -- ORIGINAL FUNCTION 
+   
     remove(fragranceId) {
         return Fragrance.findByIdAndDelete(fragranceId);
     },

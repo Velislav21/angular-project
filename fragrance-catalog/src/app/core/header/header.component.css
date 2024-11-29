@@ -1,6 +1,9 @@
+nav {
+  margin-left: 250px;
+}
 header {
   display: flex;
-
+  align-items: center;
   background-color: bisque;
   padding: 20px;
 }

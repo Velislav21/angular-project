@@ -15,4 +15,20 @@ export class ApiService {
   getSingleFragrance(fragranceId: string) {
     return this.http.get<Fragrance>(`/api/fragrances/details/${fragranceId}`);
   }
+
+  create(
+    name: string,
+    imageUrl: string,
+    description: string,
+    scents: string[]
+  ) {
+    return this.http.post<Fragrance>('/api/fragrances/create', {
+      name,
+      imageUrl,
+      description,
+      scents,
+    });
+
+    
+  }
 }

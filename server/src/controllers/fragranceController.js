@@ -21,12 +21,12 @@ fragranceController.get('/details/:fragranceId', async (req, res) => {
 
 fragranceController.post('/create', async (req, res) => {
     
-    // const ownerId = req.user._id;
-
+    const ownerId = req.user._id;
     const fragranceData = req.body;
-    //! ownerId !!!
+
+    // console.log(ownerId, fragranceData)
     try {
-        const fragrance = await fragranceService.create(fragranceData)
+        const fragrance = await fragranceService.create(fragranceData, ownerId)
         res.status(200).json(fragrance)
     } catch (err) {
         const error = getError(err);

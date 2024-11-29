@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 
 const fragranceSchema = new Schema({
     name: {
@@ -7,7 +7,7 @@ const fragranceSchema = new Schema({
         minLength: 2,
     },
 
-    image: {
+    imageUrl: {
         type: String,
         required: true,
         // validate: /^https?:\/\//
@@ -28,9 +28,8 @@ const fragranceSchema = new Schema({
         type: String
     }],
     owner: {
-        // type: Types.ObjectId,
-        // ref: 'User'
-        type: String
+        type: Types.ObjectId,
+        ref: 'User'
     }
 })
 

@@ -1,7 +1,7 @@
 export interface Fragrance {
     _id: string,
     name: string,
-    image: string,
+    imageUrl: string,
     description: string,
     scents: string[],
 }
