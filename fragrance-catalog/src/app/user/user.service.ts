@@ -15,7 +15,11 @@ export class UserService {
     return !!this.user;
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.user$.subscribe((user) => {
+      this.user = user;
+    })
+  }
 
   register(email: string, name: string, password: string, rePassword: string) {
     return this.http
@@ -38,5 +42,11 @@ export class UserService {
     return this.http
       .get<User>('/api/users/profile')
       .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  logout() {
+    return this.http
+      .post('/api/users/logout', {})
+      .pipe(tap((user) => this.user$$.next(null)));
   }
 }

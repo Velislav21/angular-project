@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Fragrance } from '../../types/fragrance';
 import { ApiService } from '../../api.service';
 import { RouterLink } from '@angular/router';
@@ -11,10 +11,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './fragrance-list.component.css',
 })
 export class FragranceListComponent implements OnInit {
-  fragrances: Fragrance[] = [];
-
   constructor(private apiService: ApiService) {}
 
+  fragrances: Fragrance[] = [];
+  
+  
   ngOnInit() {
     this.apiService.getFragrances().subscribe((fragrancesFromDb) => {
       this.fragrances = fragrancesFromDb;

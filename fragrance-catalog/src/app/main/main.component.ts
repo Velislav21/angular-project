@@ -5,7 +5,7 @@ import { FragranceListComponent } from '../fragrance/fragrance-list/fragrance-li
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [WelcomeMessageComponent, FragranceListComponent],
+  imports: [FragranceListComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

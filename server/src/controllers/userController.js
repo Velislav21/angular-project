@@ -19,10 +19,10 @@ userController.post('/register', async (req, res) => {
 })
 userController.post('/login', async (req, res) => {
 
-    const { name, password } = req.body;
+    const { email, password } = req.body;
 
     try {
-        const response = await userService.login(name, password);
+        const response = await userService.login(email, password);
         res.cookie(AUTH_COOKIE_NAME, response.accessToken, { httpOnly: true, sameSite: 'none', secure: true })
         res.status(200).json(response)
 
@@ -43,8 +43,15 @@ userController.get('/profile', (req, res) => {
 
 })
 
-userController.get('/logout', (req, res) => {
-    res.clearCookie(AUTH_COOKIE_NAME);
+userController.post('/logout', (req, res) => {
+    const token = req.cookies[AUTH_COOKIE_NAME];
+    try {
+        res.clearCookie(AUTH_COOKIE_NAME).send({ message: 'Cookie cleared' })
+
+    } catch (err) {
+        console.log('error')
+        console.log(err)
+    }
 })
 
 export default userController

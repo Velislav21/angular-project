@@ -19,8 +19,8 @@ const userService = {
     },
     async login(email, password) {
 
+        console.log(email, password)
         const user = await User.findOne({ email });
-
         if (!user) {
             throw new Error('Invalid email or password!');
         }
