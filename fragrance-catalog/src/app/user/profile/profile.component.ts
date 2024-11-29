@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { User } from '../../types/user';
+import { ProfileDetails, User } from '../../types/user';
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -9,14 +9,16 @@ import { User } from '../../types/user';
   styleUrl: './profile.component.css',
 })
 export class ProfileComponent implements OnInit {
+  profileDetails: ProfileDetails = {
+    name: '',
+    email: '',
+  };
 
-  user: User | undefined;
-  
-  constructor( private userService: UserService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    
-    const profile = this.userService.getProfile()
-
+    const { name, email } = this.userService.user!;
+    console.log(name, email)
+    this.profileDetails = { name, email };
   }
 }

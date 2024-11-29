@@ -4,3 +4,8 @@ export interface User {
     password: string,
     id: string,
 }
+
+export interface ProfileDetails {
+    name: string,
+    email: string,
+}
