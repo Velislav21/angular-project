@@ -42,4 +42,8 @@ export class ApiService {
       name, imageUrl, description, scents
     })
   }
+
+  deleteFragrance(id: string) {
+    return this.http.delete(`/api/fragrances/delete/${id}`)
+  }
 }

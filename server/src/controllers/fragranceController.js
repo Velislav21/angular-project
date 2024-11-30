@@ -47,4 +47,17 @@ fragranceController.patch('/edit/:fragranceId', async (req, res) => {
     }
 })
 
+fragranceController.delete('/delete/:fragranceId', async (req, res) => {
+
+    const fragranceId = req.params.fragranceId;
+
+    try {
+        await fragranceService.remove(fragranceId);
+        res.status(200).json({message: "deleted"})
+    } catch (err) {
+        const error = getError(err);
+        res.status(400).json({ message: error })
+    }
+})
+
 export default fragranceController
