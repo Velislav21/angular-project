@@ -14,9 +14,9 @@
       <button class="btn btn-like">❤ Like</button>
       @if(isOwner){
 
+        <button routerLink="/fragrances/edit/{{fragrance._id}}" class="btn btn-edit">✏️ Edit</button>
+        <button class="btn btn-delete">🗑️ Delete</button>
       }
-      <button routerLink="/fragrances/edit/{{fragrance._id}}" class="btn btn-edit">✏️ Edit</button>
-      <button class="btn btn-delete">🗑️ Delete</button>
     </div>
   </div>
 </div>

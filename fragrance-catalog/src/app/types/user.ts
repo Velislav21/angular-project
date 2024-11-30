@@ -7,7 +7,6 @@ export interface User {
 export interface UserForAuth {
     name: string,
     email: string,
-    password: string,
     _id: string,
     accessToken: string;
 }

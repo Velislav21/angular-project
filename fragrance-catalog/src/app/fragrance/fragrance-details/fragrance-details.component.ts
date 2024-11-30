@@ -15,14 +15,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class FragranceDetailsComponent implements OnInit {
   fragrance = {} as Fragrance;
-
-  user: UserForAuth = {
-    name: '',
-    email: '',
-    password: '',
-    _id: '',
-    accessToken: '',
-  };
+  user = {} as UserForAuth;
+  // user: UserForAuth = {
+  //   name: '',
+  //   email: '',
+  //   _id: '',
+  //   accessToken: '',
+  // };
 
   isOwner = false;
 
@@ -39,9 +38,11 @@ export class FragranceDetailsComponent implements OnInit {
 
     this.userService.getProfile().subscribe((user) => {
       this.user = user;
+      this.isOwner = this.fragrance.owner === this.user._id;
+      // console.log(this.fragrance, ' ---->', this.user._id)
+      console.log(this.fragrance.owner)
+      console.log(this.user._id)
     });
-
-    this.isOwner = this.fragrance.owner == this.user._id;
-    console.log(this.isOwner);
+    
   }
 }
