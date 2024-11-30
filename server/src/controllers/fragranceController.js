@@ -33,10 +33,11 @@ fragranceController.post('/create', async (req, res) => {
         res.status(400).json({ message: error })
     }
 })
-fragranceController.patch('/update/:fragranceId', async (req, res) => {
+fragranceController.patch('/edit/:fragranceId', async (req, res) => {
 
     const fragranceId = req.params.fragranceId;
     const fragranceData = req.body;
+    // console.log(fragranceId, fragranceData)
     try {
         const result = await fragranceService.update(fragranceId, fragranceData)
         res.status(200).json(result)

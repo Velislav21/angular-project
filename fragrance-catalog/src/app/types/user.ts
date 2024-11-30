@@ -8,7 +8,7 @@ export interface UserForAuth {
     name: string,
     email: string,
     password: string,
-    id: string,
+    _id: string,
     accessToken: string;
 }
 

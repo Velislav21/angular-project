@@ -28,7 +28,17 @@ export class ApiService {
       description,
       scents,
     });
+  }
 
-    
+  editFragrance(
+    id: string,
+    name: string,
+    imageUrl: string,
+    description: string,
+    scents: string[]
+  ) {
+    return this.http.patch<Fragrance>(`/api/fragrances/edit/${id}`, {
+      name, imageUrl, description, scents
+    })
   }
 }

@@ -1,0 +1,53 @@
+<div class="create-container">
+  <div class="create-header">
+    <h1>Edit Fragrance</h1>
+    <img [src]="fragrance.imageUrl" class="fragrance-image" />
+  </div>
+  <form #editForm="ngForm" (ngSubmit)="edit()">
+    <div class="form-group">
+      <label for="name">Fragrance Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        #nameInput="ngModel"
+        ngModel
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">Image Url</label>
+      <input
+        type="text"
+        id="imageUrl"
+        name="imageUrl"
+        #imageInput="ngModel"
+        ngModel
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        id="description"
+        name="description"
+        #descriptionInput="ngModel"
+        ngModel
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="scents">Scents</label>
+      <input
+        type="text"
+        id="scents"
+        name="scents"
+        #scentsInput="ngModel"
+        ngModel
+        required
+      />
+    </div>
+    <button class="fragrance-button">Edit Fragrance</button>
+  </form>
+</div>

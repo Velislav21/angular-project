@@ -23,9 +23,8 @@ const fragranceSchema = new Schema({
     }
     ],
     likedList: [{
-        // type: Types.ObjectId,
-        // ref: 'User',
-        type: String
+        type: Types.ObjectId,
+        ref: 'User',
     }],
     owner: {
         type: Types.ObjectId,
