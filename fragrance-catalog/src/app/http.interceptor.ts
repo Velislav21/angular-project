@@ -1,5 +1,5 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { environment } from './environments/environments';
+import { environment } from '../environments/environments';
 
 const { apiUrl } = environment
 const API = '/api'

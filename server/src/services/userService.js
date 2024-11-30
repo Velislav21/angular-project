@@ -35,7 +35,7 @@ const userService = {
 
 
 
-async function generateResponse(user) { 
+async function generateResponse(user) {
     const payload = {
         _id: user._id,
         email: user.email,

@@ -1,4 +1,4 @@
-footer {
+/* footer {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -28,4 +28,14 @@ footer {
   gap: 30px;
   padding: 10 20px;
   padding-left: 900px;
+} */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: bisque;
+  height: 8vh;
+  color: white;
+  text-shadow: 1px 1px black;
+  text-align: center;
 }

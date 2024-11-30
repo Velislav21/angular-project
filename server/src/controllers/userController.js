@@ -33,19 +33,22 @@ userController.post('/login', async (req, res) => {
 
 })
 
-userController.get('/profile', (req, res) => {
+userController.get('/profile', async (req, res) => {
 
-    if (req.user) {
-        res.json(req.user)
+    const user = req.user;
+    const token = req.cookies[AUTH_COOKIE_NAME];
+
+    if (token) {
+        user.accessToken = token;
+        res.json(user)
     } else {
         res.json({ "Data": "no user, invalid token" })
     }
-
 })
 
 userController.get('/logout', (req, res) => {
     try {
-        res.clearCookie(AUTH_COOKIE_NAME).send({ message: 'Cookie cleared' })
+        res.clearCookie(AUTH_COOKIE_NAME).status(204).send({ message: 'Cookie cleared' })
 
     } catch (err) {
         console.log('error')
