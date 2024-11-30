@@ -3,7 +3,7 @@ import { ApiService } from '../../api.service';
 import { Fragrance } from '../../types/fragrance';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { UserService } from '../../user/user.service';
-import { UserForAuth } from '../../types/user';
+import { ProfileDetails, User, UserForAuth } from '../../types/user';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -14,18 +14,17 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './fragrance-details.component.css',
 })
 export class FragranceDetailsComponent implements OnInit {
+  
   fragrance = {} as Fragrance;
   user = {} as UserForAuth;
-  // user: UserForAuth = {
-  //   name: '',
-  //   email: '',
-  //   _id: '',
-  //   accessToken: '',
-  // };
 
   isOwner = false;
 
-  constructor(private apiService: ApiService,private route: ActivatedRoute,private userService: UserService) {}
+  constructor(
+    private apiService: ApiService,
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     const fragranceId = this.route.snapshot.params['fragranceId'];
@@ -34,15 +33,11 @@ export class FragranceDetailsComponent implements OnInit {
       .getSingleFragrance(fragranceId)
       .subscribe((fragranceFromDb) => {
         this.fragrance = fragranceFromDb;
-      });
 
-    this.userService.getProfile().subscribe((user) => {
-      this.user = user;
-      this.isOwner = this.fragrance.owner === this.user._id;
-      // console.log(this.fragrance, ' ---->', this.user._id)
-      console.log(this.fragrance.owner)
-      console.log(this.user._id)
-    });
-    
+        this.userService.getProfile().subscribe((user) => {
+          this.user = user;
+          this.isOwner = this.fragrance.owner === this.user._id;
+        });
+      });
   }
 }

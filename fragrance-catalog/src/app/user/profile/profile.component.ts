@@ -12,13 +12,14 @@ export class ProfileComponent implements OnInit {
   profileDetails: ProfileDetails = {
     name: '',
     email: '',
+    _id: '',
   };
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getProfile().subscribe((user) => {
-      this.profileDetails = {name: user?.name, email: user?.email}
+      this.profileDetails = {name: user?.name, email: user?.email, _id: user?._id}
     })
   }
 }
