@@ -20,7 +20,6 @@ export class AddFragranceComponent {
 
     const scentsAsArr = scents.split(' ');
     this.apiService.create(name, imageUrl, description, scentsAsArr).subscribe((res) => {
-      console.log(res)
       this.router.navigate(['/fragrances'])
     })
   }

@@ -11,7 +11,7 @@ export class UserService {
 
   user: UserForAuth | null = null;
 
-  get isLoggedIn() {
+  get isLoggedIn(): boolean {
     return !!this.user;
   }
 
