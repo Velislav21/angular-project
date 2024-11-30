@@ -9,7 +9,7 @@ import { authMiddleware } from './middlewares/authMiddleware.js';
 const app = express();
 
 const url = 'mongodb://localhost:27017';
-
+const cookieSecret = 'secret'
 mongoose.connect(url, { dbName: 'fragrances' })
     .then(() => console.log('Db successfully connected'))
     .catch((err) => console.log(`DB failed: ${err}`))
@@ -20,7 +20,7 @@ app.use(cors({
 }))
 
 app.use(express.json())
-app.use(cookieParser());
+app.use(cookieParser(cookieSecret))
 app.use(authMiddleware)
 app.use(routes)
 
