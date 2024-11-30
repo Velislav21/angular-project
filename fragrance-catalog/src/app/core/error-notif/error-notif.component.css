@@ -1,0 +1,24 @@
+.notification {
+  position: fixed;
+  top: 110px;
+  left: 20px; /* Change to 'left' for top-left corner */
+  background-color: #ff6b6b;
+  color: #fff4f4;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.notification button {
+  margin-left: 10px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.notification button:hover {
+  text-decoration: underline;
+}
