@@ -46,7 +46,7 @@ userController.get('/profile', async (req, res) => {
     }
 })
 
-userController.get('/logout', (req, res) => {
+userController.post('/logout', (req, res) => {
     try {
         res.clearCookie(AUTH_COOKIE_NAME).status(204).send({ message: 'Cookie cleared' })
 

@@ -9,7 +9,7 @@ export class UserService {
   private user$$ = new BehaviorSubject<UserForAuth | null>(null);
   public user$ = this.user$$.asObservable();
 
-  user: User | null = null;
+  user: UserForAuth | null = null;
 
   get isLoggedIn() {
     return !!this.user;
@@ -46,7 +46,7 @@ export class UserService {
 
   logout() {
     return this.http
-      .get('/api/users/logout')
+      .post('/api/users/logout', {})
       .pipe(tap((user) => this.user$$.next(null)));
   }
 }
