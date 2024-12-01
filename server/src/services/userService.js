@@ -37,7 +37,7 @@ const userService = {
         return;        
     },
     async getUser(id) {
-        const user = await User.findById(id);
+        const user = await User.findById(id).lean();
         return user
     }
 }

@@ -37,9 +37,9 @@ export const routes: Routes = [
     ],
   },
   //User routing
-  { path: 'login', component: LoginComponent,  canActivate: [notLoggedIn],  },
-  { path: 'register', component: RegisterComponent, canActivate: [notLoggedIn],},
-  { path: 'profile', component: ProfileComponent, canActivate: [isUserLogged], },
+  { path: 'login', component: LoginComponent, canActivate: [notLoggedIn] },
+  { path: 'register', component: RegisterComponent, canActivate: [notLoggedIn] },
+  { path: 'profile', component: ProfileComponent },
   // End of user roting
   { path: 'error', component: ErrorNotifComponent },
   { path: '404', component: PageNotFoundComponent },

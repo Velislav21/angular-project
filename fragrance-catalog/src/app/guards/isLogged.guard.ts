@@ -9,8 +9,6 @@ export const isUserLogged: CanActivateFn = (
   const userService = inject(UserService);
   const router = inject(Router);
 
-  console.log(userService.isLoggedIn)
-
   if (userService.isLoggedIn) {
     return true;
   }
