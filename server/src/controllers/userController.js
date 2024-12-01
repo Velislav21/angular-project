@@ -46,6 +46,18 @@ userController.get('/profile', async (req, res) => {
     }
 })
 
+userController.put('/profile/:id', async (req, res) => {
+    const id = req.params.id;
+
+    const { name, email} = req.body;
+    try {
+        await userService.updateProfile(id, name, email)
+        
+    } catch (err) {
+        res.status(400).send({"message": "something is wrong"})
+    }
+})
+
 userController.post('/logout', (req, res) => {
     try {
         res.clearCookie(AUTH_COOKIE_NAME).status(204).send({ message: 'Cookie cleared' })

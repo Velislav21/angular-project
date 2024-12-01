@@ -5,11 +5,14 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: '././profile.component.html',
   styleUrl: './profile.component.css',
 })
 export class ProfileComponent implements OnInit {
+
+  isInEditMode = false;
+
   profileDetails: ProfileDetails = {
     name: '',
     email: '',
@@ -19,11 +22,9 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+
     this.userService.getProfile().subscribe((user) => {
       this.profileDetails = {name: user?.name, email: user?.email, _id: user?._id}
     })
-    // const { name, email, _id } = this.userService.user!;
-    // console.log(name, email, _id);
-    // console.log(this.userService.user)
   }
 }
