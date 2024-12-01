@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { Fragrance } from '../../types/fragrance';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserService } from '../../user/user.service';
-import { ProfileDetails, User, UserForAuth } from '../../types/user';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UserForAuth } from '../../types/user';
 
 @Component({
   selector: 'app-fragrance-details',
@@ -19,21 +18,22 @@ export class FragranceDetailsComponent implements OnInit {
 
   isOwner = false;
 
-  get getFragranceId() : string {
+  get getFragranceId(): string {
     return this.route.snapshot.params['fragranceId'];
   }
 
   constructor(
+    private destroyRef: DestroyRef,
     private apiService: ApiService,
     private route: ActivatedRoute,
     private userService: UserService,
-    private router: Router,
+    private router: Router
   ) {}
   // const fragranceId = this.route.snapshot.params['fragranceId'];
   ngOnInit(): void {
-    const fragranceId = this.getFragranceId
+    const fragranceId = this.getFragranceId;
 
-    this.apiService
+    const subscription = this.apiService
       .getSingleFragrance(fragranceId)
       .subscribe((fragranceFromDb) => {
         this.fragrance = fragranceFromDb;
@@ -43,12 +43,13 @@ export class FragranceDetailsComponent implements OnInit {
           this.isOwner = this.fragrance.owner === this.user._id;
         });
       });
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
-  delete() {  
-    const fragranceId = this.getFragranceId
-  
+  delete() {
+    const fragranceId = this.getFragranceId;
+
     this.apiService.deleteFragrance(fragranceId).subscribe(() => {
-      this.router.navigate(['/fragrances'])
+      this.router.navigate(['/fragrances']);
     });
   }
 }

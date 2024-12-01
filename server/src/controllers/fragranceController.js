@@ -10,6 +10,20 @@ fragranceController.get('/', async (req, res) => {
 
     res.status(200).json(fragrances);
 })
+fragranceController.get('/:name', async (req, res) => {
+
+    const name = req.user.name;
+    console.log(name)
+    // const fragrances = await fragranceService.getAll().lean();
+    
+    // const filtered = fragrances.filter((fragrance => {
+    //     let id = fragrance.owner.type
+    //     console.log(id)
+    //     // console.log(ownerId)
+    //     // console.log(fragrance.owner !== ownerId)
+    // }))
+    // res.status(200).json(filtered);
+})
 
 fragranceController.get('/details/:fragranceId', async (req, res) => {
 
