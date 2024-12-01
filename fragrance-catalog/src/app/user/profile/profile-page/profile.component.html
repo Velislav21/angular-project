@@ -1,15 +1,18 @@
-
 <div class="profile-container">
-    <div class="profile"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkshh0IMgSA8yw_1JFALVsXFojVdR88C05Fw&s" alt="default user">
-        <h3>User Info:</h3>
-        <div class="flex">
-            <p>Name: </p>
-            <p>{{profileDetails.name}}</p>
-        </div>
-        <div class="flex">
-            <p>Email: </p>
-            <p>{{profileDetails.email}}</p>
-        </div>
-        <button class="edit-button">Edit</button>
+  <div class="profile">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkshh0IMgSA8yw_1JFALVsXFojVdR88C05Fw&s"
+      alt="default user"
+    />
+    <h3>User Info:</h3>
+    <div class="flex">
+      <p>Name:</p>
+      <p>{{ profileDetails.name }}</p>
     </div>
+    <div class="flex">
+      <p>Email:</p>
+      <p>{{ profileDetails.email }}</p>
+    </div>
+    <button routerLink="/profile/{{profileDetails._id}}" class="edit-button">Edit</button>
+  </div>
 </div>

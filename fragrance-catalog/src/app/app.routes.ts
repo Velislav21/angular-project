@@ -9,6 +9,7 @@ import { ProfileComponent } from './user/profile/profile-page/profile.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorNotifComponent } from './core/error-notif/error-notif.component';
 import { FragranceEditComponent } from './fragrance/fragrance-edit/fragrance-edit.component';
+import { ProfileEditComponent } from './user/profile/profile-edit/profile-edit.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -26,7 +27,10 @@ export const routes: Routes = [
   //User routing
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', children: [
+    {path: '', component: ProfileComponent},
+    {path: ':id', component: ProfileEditComponent}
+  ] },
   // End of user roting
   {path: 'error', component: ErrorNotifComponent},
   {path: '404', component: PageNotFoundComponent},
