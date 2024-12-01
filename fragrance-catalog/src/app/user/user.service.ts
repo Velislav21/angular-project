@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { UserForAuth } from '../types/user';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<UserForAuth | null>(null);
-  public user$ = this.user$$.asObservable();
+  private user$ = this.user$$.asObservable();
 
   user: UserForAuth | null = null;
   userSubscription: Subscription | null = null;
@@ -22,13 +22,13 @@ export class UserService implements OnDestroy {
     });
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string): Observable<UserForAuth> {
     return this.http
       .post<UserForAuth>('/api/users/login', { email, password })
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  register(email: string, name: string, password: string, rePassword: string) {
+  register(email: string, name: string, password: string, rePassword: string): Observable<UserForAuth> {
     return this.http
       .post<UserForAuth>(`/api/users/register`, {
         email,
@@ -38,7 +38,7 @@ export class UserService implements OnDestroy {
       })
       .pipe(tap((user) => this.user$$.next(user)));
   }
-  getProfile() {
+  getProfile(): Observable<UserForAuth> {
     return this.http.get<UserForAuth>('/api/users/profile').pipe(
       tap((user) => {
         this.user$$.next(user);
@@ -46,7 +46,7 @@ export class UserService implements OnDestroy {
     );
   }
 
-  updateProfile(id: string, name: string, email:string) {
+  updateProfile(id: string, name: string, email:string): Observable<UserForAuth> {
     return this.http
       .put<UserForAuth>(`/api/users/profile/${id}`, {name, email})
       .pipe(tap((user) => this.user$$.next(user)));
@@ -62,3 +62,5 @@ export class UserService implements OnDestroy {
     this.userSubscription?.unsubscribe();
   }
 }
+
+

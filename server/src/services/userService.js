@@ -35,6 +35,10 @@ const userService = {
 
         await User.findByIdAndUpdate(id, { name, email})
         return;        
+    },
+    async getUser(id) {
+        const user = await User.findById(id);
+        return user
     }
 }
 
