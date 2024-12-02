@@ -16,15 +16,18 @@ export const guestUser: CanActivateFn = () => {
       }
       return true;
     }),
-    catchError((error) => {
-      if(error.status === 401) {
-        return of(true)
-      }
-      router.navigate(['/home']);
-      return of(false)
+    // catchError((error) => {
+    //   if(error.status === 401) {
+    //     return of(true)
+    //   }
+    //   router.navigate(['/home']);
+    //   return of(false)
+    // })
+    catchError(() => {
+      router.navigate(['/404']);
+      return of(false);
     })
-  )
-  ;
+  );
 
   // const isUserLoggedIn = userService.isLoggedIn;
 

@@ -32,15 +32,16 @@ export class FragranceDetailsComponent implements OnInit {
   ngOnInit(): void {
     const fragranceId = this.getFragranceId;
 
-    console.log(this.userService.isLoggedIn)
-    
     const subscription = this.apiService
-      .getSingleFragrance(fragranceId)
-      .subscribe((fragranceFromDb) => {
+    .getSingleFragrance(fragranceId)
+    .subscribe((fragranceFromDb) => {
+      
+      this.fragrance = fragranceFromDb;
+      
+      this.isOwner = this.fragrance.owner === this.userService.user!._id;
 
-        this.fragrance = fragranceFromDb;
-
-        this.isOwner = this.fragrance.owner === this.user._id;
+      console.log(fragranceFromDb)
+      console.log(this.userService.user)
       });
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
