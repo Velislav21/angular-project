@@ -36,11 +36,15 @@ userController.post('/login', async (req, res) => {
 userController.get('/profile', async (req, res) => {
 
     const user = req.user;
-    const token = req.cookies[AUTH_COOKIE_NAME];
+    // const token = req.cookies[AUTH_COOKIE_NAME];
+    const token = req.cookies?.auth
+
 
     console.log(user)
     try {
-        user.accessToken = token;
+        if(token){
+            user.accessToken = token;
+        }
         res.status(200).json(user)
 
     } catch (err) {

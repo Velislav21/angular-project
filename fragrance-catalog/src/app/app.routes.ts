@@ -37,7 +37,7 @@ export const routes: Routes = [
     ],
   },
   //User routing
-  { path: 'login', component: LoginComponent, canActivate: []},
+  { path: 'login', component: LoginComponent, canActivate: [guestUser]},
   { path: 'register', component: RegisterComponent, canActivate:[] },
   { path: 'profile', component: ProfileComponent },
   // End of user roting

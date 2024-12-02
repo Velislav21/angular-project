@@ -14,11 +14,16 @@ export const loggedUser: CanActivateFn = (
   const userService = inject(UserService);
   const router = inject(Router);
 
+  const user = userService.user
+
+  console.log(userService.isLoggedIn)
+
   if (userService.isLoggedIn) {
+    console.log('user is logged')
     return true;
   }
 
-  router.navigate(['/login']);
+  router.navigate(['/home']);
 
   return false;
 };
