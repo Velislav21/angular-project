@@ -25,7 +25,7 @@ export class AuthComponent implements OnInit {
       },
       complete: () => {
         this.isAuth = false;
-        console.log(this.userService.isLoggedIn)
+        console.log(this.userService.user)
       }
     })
   }

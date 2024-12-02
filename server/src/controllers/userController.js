@@ -38,11 +38,13 @@ userController.get('/profile', async (req, res) => {
     const user = req.user;
     const token = req.cookies[AUTH_COOKIE_NAME];
 
+    console.log(user)
+
     if (token) {
         user.accessToken = token;
-        res.json(user)
+        res.status(200).json(user)
     } else {
-        res.json({ "Data": "no user, invalid token" })
+        res.status(401).json({ "Data": "no user, invalid token" })
     }
 })
 
