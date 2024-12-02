@@ -28,7 +28,12 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  register(email: string, name: string, password: string, rePassword: string): Observable<UserForAuth> {
+  register(
+    email: string,
+    name: string,
+    password: string,
+    rePassword: string
+  ): Observable<UserForAuth> {
     return this.http
       .post<UserForAuth>(`/api/users/register`, {
         email,
@@ -46,9 +51,13 @@ export class UserService implements OnDestroy {
     );
   }
 
-  updateProfile(id: string, name: string, email:string): Observable<UserForAuth> {
+  updateProfile(
+    id: string,
+    name: string,
+    email: string
+  ): Observable<UserForAuth> {
     return this.http
-      .put<UserForAuth>(`/api/users/profile/${id}`, {name, email})
+      .put<UserForAuth>(`/api/users/profile/${id}`, { name, email })
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
@@ -62,5 +71,3 @@ export class UserService implements OnDestroy {
     this.userSubscription?.unsubscribe();
   }
 }
-
-

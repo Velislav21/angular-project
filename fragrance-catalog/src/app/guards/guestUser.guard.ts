@@ -9,33 +9,12 @@ export const guestUser: CanActivateFn = () => {
 
   return userService.getProfile().pipe(
     map((user) => {
-      console.log(user);
       if (user) {
+        console.log(user);
         router.navigate(['/home']);
         return false;
       }
       return true;
     }),
-    // catchError((error) => {
-    //   if(error.status === 401) {
-    //     return of(true)
-    //   }
-    //   router.navigate(['/home']);
-    //   return of(false)
-    // })
-    catchError(() => {
-      router.navigate(['/404']);
-      return of(false);
-    })
   );
-
-  // const isUserLoggedIn = userService.isLoggedIn;
-
-  // console.log(isUserLoggedIn);
-
-  // if (!isUserLoggedIn) {
-  //   return false;
-  // }
-  // router.navigate(['/login']);
-  // return true;
 };
