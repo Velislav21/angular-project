@@ -9,8 +9,8 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorNotifComponent } from './core/error-notif/error-notif.component';
 import { FragranceEditComponent } from './fragrance/fragrance-edit/fragrance-edit.component';
-import { isUserLogged } from './guards/isLogged.guard';
-import { notLoggedIn } from './guards/isNotLogged.guard';
+import { guestUser } from './guards/guestUser.guard';
+import { loggedUser } from './guards/loggedUser.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,7 +23,7 @@ export const routes: Routes = [
       {
         path: 'create',
         component: AddFragranceComponent,
-        canActivate: [isUserLogged],
+        canActivate: [],
       },
       {
         path: ':fragranceId',
@@ -32,13 +32,13 @@ export const routes: Routes = [
       {
         path: 'edit/:fragranceId',
         component: FragranceEditComponent,
-        canActivate: [isUserLogged],
+        canActivate: [],
       },
     ],
   },
   //User routing
-  { path: 'login', component: LoginComponent, canActivate: [notLoggedIn] },
-  { path: 'register', component: RegisterComponent, canActivate: [notLoggedIn] },
+  { path: 'login', component: LoginComponent, canActivate: [] },
+  { path: 'register', component: RegisterComponent, canActivate: [] },
   { path: 'profile', component: ProfileComponent },
   // End of user roting
   { path: 'error', component: ErrorNotifComponent },
