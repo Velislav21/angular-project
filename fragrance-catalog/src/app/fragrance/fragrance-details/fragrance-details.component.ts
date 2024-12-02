@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef,  OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { Fragrance } from '../../types/fragrance';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -29,19 +29,18 @@ export class FragranceDetailsComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {}
-  // const fragranceId = this.route.snapshot.params['fragranceId'];
   ngOnInit(): void {
     const fragranceId = this.getFragranceId;
 
+    console.log(this.userService.isLoggedIn)
+    
     const subscription = this.apiService
       .getSingleFragrance(fragranceId)
       .subscribe((fragranceFromDb) => {
+
         this.fragrance = fragranceFromDb;
 
-        this.userService.getProfile().subscribe((user) => {
-          this.user = user;
-          this.isOwner = this.fragrance.owner === this.user._id;
-        });
+        this.isOwner = this.fragrance.owner === this.user._id;
       });
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
