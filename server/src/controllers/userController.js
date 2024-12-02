@@ -40,24 +40,32 @@ userController.get('/profile', async (req, res) => {
 
     console.log(user)
 
-    if (token) {
+    // if (token) {
+    //     user.accessToken = token;
+    //     res.status(200).json(user)
+    // } else {
+    //     res.status(401).json({ "Data": "no user, invalid token" })
+    // }
+    try {
         user.accessToken = token;
         res.status(200).json(user)
-    } else {
+
+    } catch (err) {
         res.status(401).json({ "Data": "no user, invalid token" })
     }
 })
 
-userController.put('/profile/:id', async (req, res) => {
+userController.put('/profile', async (req, res) => {
     const id = req.params.id;
 
     const { name, email } = req.body;
-    try {
-        await userService.updateProfile(id, name, email)
-        console.log('worked')
-    } catch (err) {
-        res.status(400).send({ "message": "something is wrong" })
-    }
+    console.log(id, name, email)
+    // try {
+    //     await userService.updateProfile(id, name, email)
+    //     console.log('worked')
+    // } catch (err) {
+    //     res.status(400).send({ "message": "something is wrong" })
+    // }
 })
 
 userController.post('/logout', (req, res) => {

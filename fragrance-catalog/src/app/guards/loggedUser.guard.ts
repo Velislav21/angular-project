@@ -1,5 +1,10 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivateFn,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { UserService } from '../user/user.service';
 
 export const loggedUser: CanActivateFn = (
@@ -9,13 +14,12 @@ export const loggedUser: CanActivateFn = (
   const userService = inject(UserService);
   const router = inject(Router);
 
-  const isUserLoggedIn = userService.isLoggedIn;
-
-  if (!isUserLoggedIn) {
-    router.navigate(['/login']);
-    return false;
+  if (userService.isLoggedIn) {
+    console.log('logged')
+    return true;
   }
 
-  return true;
+  router.navigate(['/home']);
 
+  return false;
 };
