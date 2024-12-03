@@ -50,17 +50,26 @@ userController.get('/profile', async (req, res) => {
     }
 })
 
-userController.put('/profile', async (req, res) => {
+userController.get('/profile/:id', async (req, res) => {
+    const id = req.params.id;
+
+    const user = await userService.getUserById(id);
+    
+    res.status(200).json(user);
+
+})
+
+userController.put('/profile/:id', async (req, res) => {
     const id = req.params.id;
 
     const { name, email } = req.body;
     console.log(id, name, email)
-    // try {
-    //     await userService.updateProfile(id, name, email)
-    //     console.log('worked')
-    // } catch (err) {
-    //     res.status(400).send({ "message": "something is wrong" })
-    // }
+    try {
+        await userService.updateProfile(id, name, email)
+        console.log('worked')
+    } catch (err) {
+        res.status(400).send({ "message": "something is wrong" })
+    }
 })
 
 userController.post('/logout', (req, res) => {

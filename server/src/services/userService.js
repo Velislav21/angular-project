@@ -36,10 +36,9 @@ const userService = {
         await User.findByIdAndUpdate(id, { name, email})
         return;        
     },
-    async getUser(id) {
+    async getUserById(id) {
 
         const user = await User.findById(id).lean();
-        console.log(user)
         return user
     }
 }

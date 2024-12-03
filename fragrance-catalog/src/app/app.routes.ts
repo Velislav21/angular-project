@@ -11,6 +11,7 @@ import { ErrorNotifComponent } from './core/error-notif/error-notif.component';
 import { FragranceEditComponent } from './fragrance/fragrance-edit/fragrance-edit.component';
 import { authGuard } from './guards/auth.guard';
 import { loggedUser } from './guards/loggedUser.guard';
+import { ProfileEditComponent } from './user/profile/profile-edit/profile-edit.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -39,7 +40,10 @@ export const routes: Routes = [
   //User routing
   { path: 'login', component: LoginComponent, canActivate: [authGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [authGuard] },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', children: [
+    {path: '', component: ProfileComponent},
+    {path: 'edit/:profileId', component: ProfileEditComponent}
+  ] },
   // End of user roting
   { path: '404', component: PageNotFoundComponent },
   { path: 'error', component: ErrorNotifComponent },

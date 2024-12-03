@@ -5,6 +5,7 @@
       alt="default user"
     />
     <h3>User Info:</h3>
+
     <div class="flex">
       <p>Name:</p>
       <p>{{ profileDetails.name }}</p>
@@ -13,6 +14,6 @@
       <p>Email:</p>
       <p>{{ profileDetails.email }}</p>
     </div>
-    <button class="edit-button" >Edit</button>
+    <button class="edit-button" [routerLink]="['/profile', 'edit', profileDetails._id]" >Edit</button>
   </div>
 </div>

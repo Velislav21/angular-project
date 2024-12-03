@@ -61,10 +61,24 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
+  getUserById(id: string): Observable<UserForAuth> {
+    return this.http
+      .get<UserForAuth>(`/api/users/profile/${id}`)
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
   logout() {
     return this.http
       .post('/api/users/logout', {})
       .pipe(tap((user) => this.user$$.next(null)));
+  }
+  updateUserInfo(name: string, email: string, id: string) {
+    this.user$$.next({
+      name: name,
+      email: email,
+      _id: id,
+      accessToken: '',
+    });
   }
 
   ngOnDestroy(): void {
