@@ -40,8 +40,6 @@ export class FragranceDetailsComponent implements OnInit {
       
       this.isOwner = this.fragrance.owner === this.userService.user!._id;
 
-      console.log(fragranceFromDb)
-      console.log(this.userService.user)
       });
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }

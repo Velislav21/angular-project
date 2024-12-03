@@ -9,13 +9,13 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorNotifComponent } from './core/error-notif/error-notif.component';
 import { FragranceEditComponent } from './fragrance/fragrance-edit/fragrance-edit.component';
-import { loggedUser } from './guards/loggedUser.guard';
-import { guestUser } from './guards/guestUser.guard';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
+  
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  // Fragrance Roting
+  // Fragrance Routing
   {
     path: 'fragrances',
     children: [
@@ -23,7 +23,6 @@ export const routes: Routes = [
       {
         path: 'create',
         component: AddFragranceComponent,
-        canActivate: [loggedUser]
       },
       {
         path: ':fragranceId',
@@ -32,16 +31,15 @@ export const routes: Routes = [
       {
         path: 'edit/:fragranceId',
         component: FragranceEditComponent,
-        canActivate: [loggedUser]
       },
     ],
   },
   //User routing
-  { path: 'login', component: LoginComponent, canActivate: [guestUser]},
-  { path: 'register', component: RegisterComponent, canActivate:[] },
+  { path: 'login', component: LoginComponent, canActivate: [authGuard]},
+  { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   // End of user roting
-  { path: 'error', component: ErrorNotifComponent },
   { path: '404', component: PageNotFoundComponent },
+  { path: 'error', component: ErrorNotifComponent },
   { path: '**', redirectTo: '/404' },
 ];
