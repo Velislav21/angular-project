@@ -10,9 +10,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ErrorNotifComponent } from './core/error-notif/error-notif.component';
 import { FragranceEditComponent } from './fragrance/fragrance-edit/fragrance-edit.component';
 import { authGuard } from './guards/auth.guard';
+import { loggedUser } from './guards/loggedUser.guard';
 
 export const routes: Routes = [
-  
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   // Fragrance Routing
@@ -23,6 +23,7 @@ export const routes: Routes = [
       {
         path: 'create',
         component: AddFragranceComponent,
+        canActivate: [loggedUser]
       },
       {
         path: ':fragranceId',
@@ -31,12 +32,13 @@ export const routes: Routes = [
       {
         path: 'edit/:fragranceId',
         component: FragranceEditComponent,
+        canActivate: [loggedUser]
       },
     ],
   },
   //User routing
-  { path: 'login', component: LoginComponent, canActivate: [authGuard]},
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent, canActivate: [authGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [authGuard] },
   { path: 'profile', component: ProfileComponent },
   // End of user roting
   { path: '404', component: PageNotFoundComponent },

@@ -3,20 +3,21 @@ import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } fr
 import { UserService } from '../user/user.service';
 import { map } from 'rxjs';
 
-export const authGuard: CanActivateFn = (
+export const loggedUser: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) => {
   const userService = inject(UserService);
   const router = inject(Router);
 
-  return userService.getProfile().pipe(
-    map((user) => {
-        if (user) {
-            router.navigate(['/home']);
-            return false;
-        }
-        return true;
-    })
-)
+    console.log(userService.isLoggedIn)
+
+  if (userService.isLoggedIn) {
+    return true;
+  }
+
+  router.navigate(['/login']);
+
+  return false;
+
 };

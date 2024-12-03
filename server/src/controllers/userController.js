@@ -39,23 +39,15 @@ userController.get('/profile', async (req, res) => {
     // const token = req.cookies[AUTH_COOKIE_NAME];
     const token = req.cookies?.auth
 
-    if (token) {
-        user.accessToken = token;
+    try {
+        if(token){
+            user.accessToken = token;
+        }
         res.status(200).json(user)
-    } else {
+
+    } catch (err) {
         res.status(401).json({ "Data": "no user, invalid token" })
     }
-
-    // try {
-    //     if(token){
-    //         user.accessToken = token;
-    //     }
-    //     res.status(200).json(user)
-
-    // } catch (err) {
-    //     console.log('we get here')
-    //     res.status(401).json({ "Data": "no user, invalid token" })
-    // }
 })
 
 userController.put('/profile', async (req, res) => {
