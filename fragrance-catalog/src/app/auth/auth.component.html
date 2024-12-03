@@ -1,4 +1,6 @@
-@if (!isAuth) {
-
+@if (isAuth) {
+    <app-loader></app-loader>
+ } @else {
 <ng-content />
+
 }

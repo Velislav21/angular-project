@@ -21,7 +21,7 @@ const fragranceService = {
         return Fragrance.findByIdAndDelete(fragranceId);
     },
     update(fragranceId, fragranceData) {
-        return Fragrance.findByIdAndUpdate(fragranceId, fragranceData, { runValidators: true });
+        return Fragrance.findByIdAndUpdate(fragranceId, fragranceData);
         // return Fragrance.findByIdAndUpdate(fragranceId, fragranceData);
     },
     like(fragranceId, userId) {
