@@ -46,13 +46,27 @@
             name="email"
             email
             #emailInput="ngModel"
+            minlength="10"
             ngModel
             required
           />
         </div>
-        <div class="error-message">
-          <p>Error. Something went wrong</p>
-        </div>
+        @if(emailInput?.touched) {
+
+          @if(emailInput?.errors?.['required']){
+            
+            <div class="error-message">
+              <p>Email is required.</p>
+            </div>
+            }
+          @if(emailInput?.errors?.['minlength']){
+            
+            <div class="error-message">
+              <p>Email must be at least 10 characters.</p>
+            </div>
+            }
+            <!-- Works ! -->
+        }
       </div>
       <button class="edit-button" (click)="onCancel($event)">Cancel</button>
       <button class="edit-button"

@@ -40,13 +40,15 @@
       />
     </div>
 
-    @if (passwordInput.touched) {
-      <div>
-        @if (passwordInput.errors?.['required']) {
-        <div>Password is required.</div>
+    @if(passwordInput?.touched) {
+
+      @if(passwordInput?.errors?.['required']){
+        
+        <div class="error-message">
+          <p>Name is required.</p>
+        </div>
         }
-      </div>
-      }
+    }
 
     <button class="button">Login</button>
   </form>
