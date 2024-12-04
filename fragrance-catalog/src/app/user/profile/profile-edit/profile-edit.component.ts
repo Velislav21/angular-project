@@ -37,6 +37,6 @@ export class ProfileEditComponent implements OnInit {
       console.log(res)
       this.router.navigate(['/profile'])
     })
-    this.userService.updateUserInfo(name, email, id);
   }
+
 }
