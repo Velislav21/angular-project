@@ -42,7 +42,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [authGuard] },
   { path: 'profile', children: [
     {path: ':id', component: ProfileComponent},
-    {path: 'edit/:profileId', component: ProfileEditComponent}
+    {path: 'edit/:profileId', component: ProfileEditComponent, canActivate: [loggedUser]}
   ] },
   // End of user roting
   { path: '404', component: PageNotFoundComponent },
