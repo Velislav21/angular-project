@@ -19,6 +19,9 @@ export class HeaderComponent {
   get name(): string {
     return this.userService.user?.name || '';
   }
+  get id(): string {
+    return this.userService.user?._id || '';
+  }
 
   logout() {
     this.userService.logout().subscribe((res) => {

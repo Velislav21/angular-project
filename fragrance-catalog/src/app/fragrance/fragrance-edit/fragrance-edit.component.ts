@@ -48,4 +48,9 @@ export class FragranceEditComponent {
       this.router.navigate(['/fragrances'])
     });
   }
+
+  onCancel(event: Event) {
+    event.preventDefault();
+    history.back()
+  }
 }

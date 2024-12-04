@@ -7,29 +7,32 @@
     <h3>Edit Profile Info:</h3>
 
     <form #editForm="ngForm" (ngSubmit)="onEdit()">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          #nameInput="ngModel"
-          ngModel
-          required
-        />
+      <div class="flex">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            #nameInput="ngModel"
+            ngModel
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            email
+            #emailInput="ngModel"
+            ngModel
+            required
+          />
+        </div>
       </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          email
-          #emailInput="ngModel"
-          ngModel
-          required
-        />
-      </div>
+      <button class="edit-button" (click)="onCancel($event)">Cancel</button>
       <button class="edit-button">Edit</button>
     </form>
   </div>

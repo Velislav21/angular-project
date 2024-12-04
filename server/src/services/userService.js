@@ -33,8 +33,8 @@ const userService = {
 
     async updateProfile(id, name, email) {
 
-        await User.findByIdAndUpdate(id, { name, email})
-        return;        
+        await User.findByIdAndUpdate(id, { name, email }, { new: true })
+        return;
     },
     async getUserById(id) {
 

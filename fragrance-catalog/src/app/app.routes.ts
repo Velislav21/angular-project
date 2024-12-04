@@ -41,7 +41,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [authGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [authGuard] },
   { path: 'profile', children: [
-    {path: '', component: ProfileComponent},
+    {path: ':id', component: ProfileComponent},
     {path: 'edit/:profileId', component: ProfileEditComponent}
   ] },
   // End of user roting

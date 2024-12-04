@@ -18,8 +18,11 @@
       <li>
         <a routerLink="/fragrances/create">Create Fragrance</a>
       </li>
-      <li>
+      <!-- <li>
         <a routerLink="/profile">{{ name }}'s profile</a>
+      </li> -->
+      <li>
+        <a [routerLink]="['/profile', id]">{{ name }}'s profile</a>
       </li>
       <li>
         <a (click)="logout()">Logout</a>

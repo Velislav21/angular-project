@@ -65,8 +65,8 @@ userController.put('/profile/:id', async (req, res) => {
     const { name, email } = req.body;
     console.log(id, name, email)
     try {
-        await userService.updateProfile(id, name, email)
-        console.log('worked')
+        const user = await userService.updateProfile(id, name, email)
+        res.json(user);
     } catch (err) {
         res.status(400).send({ "message": "something is wrong" })
     }
