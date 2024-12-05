@@ -1,6 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { environment } from '../environments/environments';
-import { catchError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 import { inject } from '@angular/core';
 import { ErrorNotifService } from './core/error-notif/error-notif.service';
 import { Router } from '@angular/router';
@@ -28,7 +28,7 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
         router.navigate(['/error']);
       }
 
-      return [err];
+      return throwError(() => err);
     })
   );
 };
