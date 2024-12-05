@@ -45,6 +45,23 @@
         required
       />
     </div>
+
+    @if(imageInput?.touched) {
+
+      @if(imageInput?.errors?.['required']){
+        
+        <div class="error-message">
+          <p>Image url is required.</p>
+        </div>
+        }
+      @if(imageInput?.errors?.['minlength']){
+        <!-- http validation -->
+        <div class="error-message">
+          <p>Name must be at least 3 characters.</p>
+        </div>
+        }
+    }
+
     <div class="form-group">
       <label for="description">Description</label>
       <input
@@ -54,8 +71,27 @@
         #descriptionInput="ngModel"
         ngModel
         required
+        minlength="15"
       />
     </div>
+
+    @if(descriptionInput?.touched) {
+
+      @if(descriptionInput?.errors?.['required']){
+        
+        <div class="error-message">
+          <p>Description is required.</p>
+        </div>
+        }
+      @if(descriptionInput?.errors?.['minlength']){
+        
+        <div class="error-message">
+          <p>Description must be at least 15 characters.</p>
+        </div>
+        }
+        <!-- Works ! -->
+    }
+
     <div class="form-group">
       <label for="scents">Scents</label>
       <input
@@ -67,7 +103,21 @@
         required
       />
     </div>
-    <button class="fragrance-button">Edit Fragrance</button>
+
+    @if(scentsInput?.touched) {
+
+      @if(scentsInput?.errors?.['required']){
+        
+        <div class="error-message">
+          <p>Scents are required.</p>
+        </div>
+        }
+    }
+
+    <button class="fragrance-button"
+    [disabled]="editForm.invalid"
+      [style]="{ backgroundColor: editForm.invalid ? 'grey' : '#908068' }"
+    >Edit Fragrance</button>
     <button class="fragrance-button" (click)="onCancel($event)">Cancel</button>
   </form>
 </div>

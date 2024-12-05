@@ -12,8 +12,26 @@
         #nameInput="ngModel"
         ngModel
         required
+        minlength="3"
       />
     </div>
+
+    @if(nameInput?.touched) {
+
+      @if(nameInput?.errors?.['required']){
+        
+        <div class="error-message">
+          <p>Name is required.</p>
+        </div>
+        }
+      @if(nameInput?.errors?.['minlength']){
+        
+        <div class="error-message">
+          <p>Name must be at least 3 characters.</p>
+        </div>
+        }
+    }
+
     <div class="form-group">
       <label for="imageUrl">Image Url</label>
       <input
@@ -25,6 +43,23 @@
         required
       />
     </div>
+
+    @if(imageInput?.touched) {
+
+      @if(imageInput?.errors?.['required']){
+        
+        <div class="error-message">
+          <p>Image url is required.</p>
+        </div>
+        }
+      @if(imageInput?.errors?.['minlength']){
+        <!-- switch with https validation -->
+        <div class="error-message">
+          <p>Image url must be at least 3 characters.</p>
+        </div>
+        }
+    }
+
     <div class="form-group">
       <label for="description">Description</label>
       <input
@@ -34,8 +69,26 @@
         #descriptionInput="ngModel"
         ngModel
         required
+        minlength="15"
       />
     </div>
+
+    @if(descriptionInput?.touched) {
+
+      @if(descriptionInput?.errors?.['required']){
+        
+        <div class="error-message">
+          <p>Description is required.</p>
+        </div>
+        }
+      @if(descriptionInput?.errors?.['minlength']){
+        
+        <div class="error-message">
+          <p>Description must be at least 15 characters.</p>
+        </div>
+        }
+    }
+
     <div class="form-group">
       <label for="scents">Scents</label>
       <input
@@ -47,6 +100,18 @@
         required
       />
     </div>
-    <button class="fragrance-button" >Create Fragrance</button>
+    @if(scentsInput?.touched) {
+
+      @if(scentsInput?.errors?.['required']){
+        
+        <div class="error-message">
+          <p>Scents are required.</p>
+        </div>
+        }
+    }
+    <button class="fragrance-button"
+    [disabled]="createForm.invalid"
+      [style]="{ backgroundColor: createForm.invalid ? 'grey' : '#908068' }"
+    >Create Fragrance</button>
   </form>
 </div>

@@ -4,53 +4,71 @@
     <p>Please login to your account</p>
   </div>
   <form #loginForm="ngForm" (ngSubmit)="login(emailInput.value, passwordInput.value)">
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="text"
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+        type="email"
         id="email"
         name="email"
         #emailInput="ngModel"
-        email
         ngModel
         required
-      />
-    </div>
+        appEmailValidation
+        minlength="15"
+        
+        />
+      </div>
+      
+      @if(emailInput?.touched) {
 
-    @if (emailInput.touched) {
-    <div>
-      @if (emailInput.errors?.['required']) {
-      <div>Email is required.</div>
+        @if(emailInput?.errors?.['required']){
+          
+          <div class="error-message">
+            <p>Email is required.</p>
+          </div>
+          }
+        @if(emailInput?.errors?.['minlength']){
+          
+          <div class="error-message">
+            <p>Email must be at least 10 characters.</p>
+          </div>
+          }
+        @if(emailInput?.errors?.['emailValidator']){
+          
+          <div class="error-message">
+            <p>Email is invalid!</p>
+          </div>
+          }
+          <!-- Works ! -->
       }
-      @if (emailInput.errors?.['email']) {
-      <div>Email is not Valid.</div>
-      }
-    </div>
-    }
-
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
         type="password"
         id="password"
         name="password"
         #passwordInput="ngModel"
         ngModel
         required
-      />
-    </div>
-
-    @if(passwordInput?.touched) {
-
-      @if(passwordInput?.errors?.['required']){
+        />
+      </div>
+      
+      @if(passwordInput?.touched) {
         
-        <div class="error-message">
-          <p>Name is required.</p>
-        </div>
+        @if(passwordInput?.errors?.['required']){
+          
+          <div class="error-message">
+            <p>Password is required.</p>
+          </div>
         }
-    }
-
-    <button class="button">Login</button>
+      }
+      
+      <button class="button"
+      [disabled]="loginForm.invalid"
+      [style]="{ backgroundColor: loginForm.invalid ? 'grey' : '#908068' }"
+      >Login</button>
   </form>
 
   <div class="signup-link">

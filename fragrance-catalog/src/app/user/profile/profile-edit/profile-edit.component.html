@@ -49,6 +49,7 @@
             minlength="10"
             ngModel
             required
+            appEmailValidation
           />
         </div>
         @if(emailInput?.touched) {
@@ -63,6 +64,12 @@
             
             <div class="error-message">
               <p>Email must be at least 10 characters.</p>
+            </div>
+            }
+          @if(emailInput?.errors?.['emailValidator']){
+            
+            <div class="error-message">
+              <p>Email is invalid!</p>
             </div>
             }
             <!-- Works ! -->

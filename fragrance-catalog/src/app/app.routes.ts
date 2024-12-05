@@ -47,5 +47,5 @@ export const routes: Routes = [
   // End of user roting
   { path: '404', component: PageNotFoundComponent },
   { path: 'error', component: ErrorNotifComponent },
-  { path: '**', redirectTo: '/404' },
+  { path: '**', redirectTo: '/404'  },
 ];

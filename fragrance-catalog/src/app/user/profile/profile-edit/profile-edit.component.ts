@@ -3,11 +3,12 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { UserService } from '../../user.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EmailValidationDirective } from '../../../directives/email-validation.directive';
 
 @Component({
   selector: 'app-user-edit',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, EmailValidationDirective],
   templateUrl: './profile-edit.component.html',
   styleUrl: './profile-edit.component.css',
 })

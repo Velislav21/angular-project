@@ -14,6 +14,7 @@
         #nameInput="ngModel"
         ngModel
         required
+        minlength="3"
       />
     </div>
 
@@ -44,9 +45,33 @@
         #emailInput="ngModel"
         ngModel
         required
-        minlength="10"
+        minlength="15"
+        appEmailValidation
       />
     </div>
+
+    @if(emailInput?.touched) {
+
+      @if(emailInput?.errors?.['required']){
+        
+        <div class="error-message">
+          <p>Email is required.</p>
+        </div>
+        }
+      @if(emailInput?.errors?.['minlength']){
+        
+        <div class="error-message">
+          <p>Email must be at least 10 characters.</p>
+        </div>
+        }
+      @if(emailInput?.errors?.['emailValidator']){
+        
+        <div class="error-message">
+          <p>Email is invalid!</p>
+        </div>
+        }
+        <!-- Works ! -->
+    }
 
     <div class="form-group">
       <label for="password">Password</label>
@@ -71,8 +96,17 @@
         required
       />
     </div>
+
+      @if (registerForm.controls['password'].value !== registerForm.controls['rePassword'].value) {
+        <div class="error-message">
+          <p>Passwords don't match!</p>
+        </div>
+      }
     
-    <button class="register-button">Create Account</button>
+    <button class="register-button" 
+    [disabled]="registerForm.invalid"
+      [style]="{ backgroundColor: registerForm.invalid ? 'grey' : '#908068' }"
+    >Create Account</button>
   </form>
   <div class="login-link">
     Already have an account? <a routerLink="/login">Login here</a>
