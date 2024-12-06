@@ -46,6 +46,20 @@ fragranceController.patch('/edit/:fragranceId', async (req, res) => {
         res.status(400).json({ message: error })
     }
 })
+fragranceController.patch('/like/:fragranceId', async (req, res) => {
+
+    const fragranceId = req.params.fragranceId;
+    const userId = req.user._id;
+    console.log(fragranceId)
+    console.log(userId)
+    try {
+        const result = await fragranceService.like(fragranceId, userId)
+        res.status(200).json(result)
+    } catch (err) {
+        const error = getError(err);
+        res.status(400).json({ message: error })
+    }
+})
 
 fragranceController.delete('/delete/:fragranceId', async (req, res) => {
 

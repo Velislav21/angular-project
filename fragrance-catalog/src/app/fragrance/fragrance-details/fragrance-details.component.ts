@@ -17,7 +17,13 @@ export class FragranceDetailsComponent implements OnInit {
   user = {} as UserForAuth;
 
   isOwner: boolean = false;
-  isLogged: boolean = false;
+
+  isLikedByUser: boolean = false;
+
+  get isLogged(): boolean {
+    return this.userService.isLoggedIn
+  }
+
   get getFragranceId(): string {
     return this.route.snapshot.params['fragranceId'];
   }
@@ -29,17 +35,18 @@ export class FragranceDetailsComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {}
+
   ngOnInit(): void {
-    this.isLogged = this.userService.isLoggedIn;
-
     const fragranceId = this.getFragranceId;
-
+    
     const subscription = this.apiService
-      .getSingleFragrance(fragranceId)
-      .subscribe((fragranceFromDb) => {
-        this.fragrance = fragranceFromDb;
+    .getSingleFragrance(fragranceId)
+    .subscribe((fragranceFromDb) => {
+      this.fragrance = fragranceFromDb;
+      
+      this.isOwner = this.fragrance.owner === this.userService.user?._id;
+      this.isLikedByUser = this.fragrance.likedList.includes(this.userService.user!._id) || false;
 
-        this.isOwner = this.fragrance.owner === this.userService.user?._id;
       });
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
@@ -52,6 +59,8 @@ export class FragranceDetailsComponent implements OnInit {
   }
 
   like() {
-    console.log(this.isLogged);
+    const fragranceId = this.fragrance._id;
+    this.apiService.likeFragrance(fragranceId).subscribe()
+    this.isLikedByUser = true;
   }
 }

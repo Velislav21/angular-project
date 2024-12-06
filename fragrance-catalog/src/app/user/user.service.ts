@@ -17,6 +17,13 @@ export class UserService implements OnDestroy {
   }
 
   constructor(private http: HttpClient) {
+    const storedUser = localStorage.getItem('user');
+
+    if (storedUser) {
+      this.user = JSON.parse(storedUser);
+      this.user$$.next(this.user);
+    }
+
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     });
@@ -25,23 +32,29 @@ export class UserService implements OnDestroy {
   login(email: string, password: string): Observable<UserForAuth> {
     return this.http
       .post<UserForAuth>('/api/users/login', { email, password })
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(
+        tap((user) => {
+          localStorage.setItem('user', JSON.stringify(user));
+          this.user$$.next(user);
+        })
+      );
   }
 
-  register(
-    email: string,
-    name: string,
-    password: string,
-    rePassword: string
+  register(email: string,name: string,password: string,rePassword: string
   ): Observable<UserForAuth> {
     return this.http
       .post<UserForAuth>(`/api/users/register`, {
         email,
         name,
         password,
-        rePassword,
+        rePassword
       })
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(
+        tap((user) => {
+          localStorage.setItem('user', JSON.stringify(user));
+          this.user$$.next(user);
+        })
+      );
   }
   getProfile(): Observable<UserForAuth> {
     return this.http.get<UserForAuth>('/api/users/profile').pipe(
@@ -67,18 +80,21 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
+  // logout() {
+  //   return this.http
+  //     .post('/api/users/logout', {})
+  //     .pipe(tap((user) => this.user$$.next(null)));
+  // }
+
   logout() {
     return this.http
       .post('/api/users/logout', {})
-      .pipe(tap((user) => this.user$$.next(null)));
-  }
-  updateUserInfo(name: string, email: string, id: string) {
-    this.user$$.next({
-      name: name,
-      email: email,
-      _id: id,
-      accessToken: '',
-    });
+      .pipe(
+        tap((user) => {
+          localStorage.removeItem("user")
+          this.user$$.next(null);
+        })
+      ) 
   }
 
   ngOnDestroy(): void {

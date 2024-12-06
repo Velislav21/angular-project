@@ -25,7 +25,7 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
         router.navigate(['/login']);
       } else {
         errorService.setError(err);
-        router.navigate(['/error']);
+        // router.navigate(['/error']);
       }
 
       return throwError(() => err);

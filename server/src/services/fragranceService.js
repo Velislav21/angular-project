@@ -25,7 +25,7 @@ const fragranceService = {
         // return Fragrance.findByIdAndUpdate(fragranceId, fragranceData);
     },
     like(fragranceId, userId) {
-        return Fragrance.findByIdAndUpdate(fragranceId, { $push: { likedList: userId } })
+        return Fragrance.findByIdAndUpdate(fragranceId, { $push: { likedList: userId } }, { new: true })
     }
 }
 

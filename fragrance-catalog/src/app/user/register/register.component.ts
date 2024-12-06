@@ -3,16 +3,23 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 import { EmailValidationDirective } from '../../directives/email-validation.directive';
+import { ErrorNotifComponent } from '../../core/error-notif/error-notif.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterLink, FormsModule, EmailValidationDirective],
+  imports: [RouterLink, FormsModule, EmailValidationDirective, ErrorNotifComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
   @ViewChild('registerForm') registerForm: NgForm | undefined;
+
+  errorMsg: string | undefined = '';
+
+  get passwordsMatch(): boolean {
+    return this.registerForm?.controls['password'].value !== this.registerForm?.controls['rePassword'].value
+  }
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -21,8 +28,13 @@ export class RegisterComponent {
 
     this.userService
       .register(email, name, password, rePassword)
-      .subscribe(() => {
-        this.router.navigate(['/home']);
-      });
+      .subscribe({
+        next: (user) => {
+          this.router.navigate(['/home']);
+        },
+        error:(err) => {
+          this.errorMsg = err.error?.message
+        }
+      })
   }
 }

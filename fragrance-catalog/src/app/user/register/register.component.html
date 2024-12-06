@@ -1,3 +1,7 @@
+@if(errorMsg) {
+  <app-error-notif></app-error-notif>
+}
+
 <!-- <main> -->
 <div class="register-container">
   <div class="register-header">
@@ -97,7 +101,8 @@
       />
     </div>
 
-      @if (registerForm.controls['password'].value !== registerForm.controls['rePassword'].value) {
+      <!-- @if (registerForm.controls['password'].value !== registerForm.controls['rePassword'].value) { -->
+      @if (passwordsMatch) {
         <div class="error-message">
           <p>Passwords don't match!</p>
         </div>

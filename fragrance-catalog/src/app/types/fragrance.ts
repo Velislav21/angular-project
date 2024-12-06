@@ -5,4 +5,5 @@ export interface Fragrance {
     imageUrl: string,
     description: string,
     scents: string[] | string,
+    likedList: string[];
 }

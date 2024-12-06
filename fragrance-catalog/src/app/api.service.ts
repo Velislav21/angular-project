@@ -47,8 +47,10 @@ export class ApiService {
     })
   }
 
-  likeFragrance() {
-    
+  likeFragrance<Fragrance>(fragranceId: string) {
+
+    return this.http.patch<Fragrance>(`/api/fragrances/like/${fragranceId}`, {})
+      
   }
 
   deleteFragrance(id: string) {

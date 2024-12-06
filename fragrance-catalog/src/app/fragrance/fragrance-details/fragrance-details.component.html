@@ -16,7 +16,6 @@
           <button routerLink="/fragrances/edit/{{fragrance._id}}" class="btn btn-edit">✏️ Edit</button>
           <button class="btn btn-delete" (click)="delete()">🗑️ Delete</button>
 
-        } @else if(isLogged) {
         <button class="btn btn-like" (click)="like()">❤ Like</button>
 
         }
