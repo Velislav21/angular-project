@@ -41,6 +41,7 @@
         #imageInput="ngModel"
         ngModel
         required
+        appImageUrlValidation
       />
     </div>
 
@@ -53,9 +54,13 @@
         </div>
         }
       @if(imageInput?.errors?.['minlength']){
-        <!-- switch with https validation -->
         <div class="error-message">
           <p>Image url must be at least 3 characters.</p>
+        </div>
+        }
+      @if(imageInput?.errors?.['urlValidator']){
+        <div class="error-message">
+          <p>Image url is invalid.</p>
         </div>
         }
     }

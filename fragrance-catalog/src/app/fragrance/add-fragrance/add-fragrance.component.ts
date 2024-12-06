@@ -4,11 +4,12 @@ import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { UserForAuth } from '../../types/user';
+import { ImageUrlValidationDirective } from '../../directives/image-url.directive';
 
 @Component({
   selector: 'app-add-fragrance',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ImageUrlValidationDirective],
   templateUrl: './add-fragrance.component.html',
   styleUrl: './add-fragrance.component.css',
 })

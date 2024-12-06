@@ -16,15 +16,6 @@ export class RegisterComponent {
 
   constructor(private userService: UserService, private router: Router) {}
 
-  get passWordsMatch(): boolean{
-
-    if((this.registerForm?.controls['password']) === (this.registerForm?.controls['rePassword'])) {
-      return true;
-    }
-    return false
-  }
-
-
   register() {
     const { email, name, password, rePassword } = this.registerForm?.form.value;
 

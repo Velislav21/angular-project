@@ -3,12 +3,13 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Fragrance } from '../../types/fragrance';
 import { ApiService } from '../../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImageUrlValidationDirective } from '../../directives/image-url.directive';
 
 
 @Component({
   selector: 'app-fragrance-edit',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ImageUrlValidationDirective],
   templateUrl: './fragrance-edit.component.html',
   styleUrl: './fragrance-edit.component.css',
 })

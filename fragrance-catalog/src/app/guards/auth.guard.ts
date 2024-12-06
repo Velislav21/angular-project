@@ -1,5 +1,10 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivateFn,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { UserService } from '../user/user.service';
 import { map } from 'rxjs';
 
@@ -12,11 +17,11 @@ export const authGuard: CanActivateFn = (
 
   return userService.getProfile().pipe(
     map((user) => {
-        if (user) {
-            router.navigate(['/home']);
-            return false;
-        }
-        return true;
+      if (user) {
+        router.navigate(['/home']);
+        return false;
+      }
+      return true;
     })
-)
+  );
 };
