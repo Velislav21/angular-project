@@ -16,11 +16,11 @@ export class HeaderComponent {
     return this.userService.isLoggedIn;
   }
 
-  get name(): string {
-    return this.userService.user?.name || '';
+  get name(): string | null {
+    return this.userService.user?.name || null;
   }
-  get id(): string {
-    return this.userService.user?._id || '';
+  get id(): string | null{
+    return this.userService.user?._id || null;
   }
 
   logout() {

@@ -30,9 +30,12 @@ export class RegisterComponent {
       .register(email, name, password, rePassword)
       .subscribe({
         next: (user) => {
+          this.errorMsg = '';
+
           this.router.navigate(['/home']);
         },
         error:(err) => {
+          console.log(err)
           this.errorMsg = err.error?.message
         }
       })
