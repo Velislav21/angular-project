@@ -50,6 +50,7 @@
 }
 
 .profile button {
+  margin: 10px;
   background-color: rgb(144, 128, 104);
   color: white;
   border: none;

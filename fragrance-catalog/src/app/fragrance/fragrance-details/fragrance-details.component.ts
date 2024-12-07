@@ -43,10 +43,13 @@ export class FragranceDetailsComponent implements OnInit {
     .getSingleFragrance(fragranceId)
     .subscribe((fragranceFromDb) => {
       this.fragrance = fragranceFromDb;
-      
-      this.isOwner = this.fragrance.owner === this.userService.user?._id;
-      this.isLikedByUser = this.fragrance.likedList.includes(this.userService.user!._id) || false;
 
+      if (this.userService.isLoggedIn) {
+
+        this.isOwner = this.fragrance.owner === this.userService.user?._id;
+        this.isLikedByUser = this.fragrance.likedList.includes(this.userService.user!._id) || false;
+      }
+        
       });
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
