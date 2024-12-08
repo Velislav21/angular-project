@@ -1,14 +1,15 @@
 <div class="container">
   @for (fragrance of fragrances; track $index) {
 
-  <div class="fragrance-container">
+  <!-- <div class="fragrance-container">
     <h2 class="fragrance-name">{{ fragrance.name }}</h2>
     <img [src]="fragrance.imageUrl" class="fragrance-image" />
 
     <div class="details-a">
       <a [routerLink]="fragrance._id">Details</a>
     </div>
-  </div>
+  </div> -->
+    <app-fragrance-post [fragrance]="fragrance"/>
   } @empty {
     <div>
       <p>No fragrances available.</p>
