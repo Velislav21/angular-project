@@ -30,11 +30,10 @@
 
 .flex {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 1em;
   padding: 0.5em;
 }
+
 
 .flex p:first-child {
   width: 35%;

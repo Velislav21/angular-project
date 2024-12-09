@@ -2,6 +2,7 @@ nav {
   margin-left: 250px;
 }
 header {
+  width: auto;
   display: flex;
   align-items: center;
   background-color: bisque;

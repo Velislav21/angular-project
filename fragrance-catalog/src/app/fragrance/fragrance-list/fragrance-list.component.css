@@ -1,8 +1,10 @@
 div.container {
+  margin-top: 50px;
   display: flex;
   gap: 30px;
   justify-content: center;
 }
+/* 
 .fragrance-container {
   border-radius: 12px;
   padding: 20px;
@@ -41,4 +43,4 @@ a {
   font-size: 14px;
   background: rgb(200, 145, 78);
   color: white;
-}
+} */
