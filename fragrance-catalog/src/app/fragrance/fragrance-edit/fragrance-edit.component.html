@@ -55,11 +55,6 @@
           <p>Image url is required.</p>
         </div>
         }
-      @if(imageInput?.errors?.['minlength']){
-        <div class="error-message">
-          <p>Name must be at least 3 characters.</p>
-        </div>
-        }
       @if(imageInput?.errors?.['urlValidator']){
         <div class="error-message">
           <p>Image url is invalid.</p>
