@@ -13,9 +13,9 @@ button:hover {
 
 body, html {
   /* justify-content: center; */
-  display: flex;
+  /* display: flex;
   height: 100%;
-  margin: auto;
+  margin: auto; */
   position: relative;
   min-height: 100vh;
   font-optical-sizing: auto;

@@ -40,7 +40,7 @@ userController.get('/profile', async (req, res) => {
     const token = req.cookies?.auth
 
     try {
-        if(token){
+        if (token) {
             user.accessToken = token;
         }
         res.status(200).json(user)
@@ -54,7 +54,7 @@ userController.get('/profile/:id', async (req, res) => {
     const id = req.params.id;
 
     const user = await userService.getUserById(id);
-    
+
     res.status(200).json(user);
 
 })
@@ -68,7 +68,8 @@ userController.put('/profile/:id', async (req, res) => {
         const user = await userService.updateProfile(id, name, email)
         res.json(user);
     } catch (err) {
-        res.status(400).send({ "message": "something is wrong" })
+        const error = getError(err)
+        res.status(400).json({ message: error })
     }
 })
 
