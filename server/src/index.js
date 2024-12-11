@@ -9,6 +9,7 @@ import { authMiddleware } from './middlewares/authMiddleware.js';
 const app = express();
 
 const url = 'mongodb://localhost:27017';
+// const url = 'mongodb://127.0.0.1:27017';
 const cookieSecret = 'secret'
 mongoose.connect(url, { dbName: 'fragrances' })
     .then(() => console.log('Db successfully connected'))
