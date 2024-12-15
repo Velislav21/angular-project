@@ -6,6 +6,7 @@ import { UserService } from '../user/user.service';
 export const loggedUser: CanActivateFn = () => {
   const userService = inject(UserService);
   const router = inject(Router);
+  
 
   if (userService.isLoggedIn) {
     return true;
